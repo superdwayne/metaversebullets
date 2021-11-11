@@ -22,12 +22,14 @@ app.get('/', async function (req, res) {
 
             $('.post-preview-content', html).each((i , elm) => {
                 const title = $(elm).find('.post-preview-title').text()
-                const des = $(elm).find('.post-preview-description').text()
-                // const title = $(this).find('a').attr('href')
-                articles.push([
-                title,
-                des
-                ])
+                const preview = $(elm).find('.post-preview-description').text()
+                const artURL = $(elm).find('.post-preview-title newsletter').attr('href')
+                articles.push({
+                title: title,
+                preview: preview,
+                atricleurl: artURL,
+                scrappedUrl: url,
+                })
             })
 
            //Todo Fine the url from the article page an pull that content in via a scrapped page

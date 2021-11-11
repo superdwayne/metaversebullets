@@ -1,5 +1,4 @@
 import React, { useLayoutEffect , useRef , Suspense,  useState, useEffect} from 'react'
-import ReactDOMServer from 'react-dom/server'
 import { Canvas,
   useFrame,
   extend,
@@ -48,7 +47,7 @@ function Line({ start, end }) {
   )
 }
 
-function Title()  {
+function Articles()  {
   
   const loading = useRef(false);
   const [shapes, setShapes] = useState(null);
@@ -79,22 +78,25 @@ function Title()  {
 
         console.log("retrieved data" , loading  )
 
-        setShapes(shape);
+        // setShapes(Object.keys(shape));
 
-      console.log(shape, "before formatting")
+      console.log(shape[0].atricleurl, "before formatting")
 
-      const formattedArr = shape.map((title, i) => {
-        return <h1 key={i} >{title}</h1>;
+
+      const formattedArr = Object.keys(shape).map((title, i) => {
+        return (
+        <span key={i}>
+          <h1>{shape[i].title}</h1>
+          <h4>{shape[i].preview}</h4>
+        </span>
+        )
+        ;
     })
 
-
-    
-
-      setShapes(formattedArr.slice(0,3));
-
+      setShapes(formattedArr.slice(0,2));
     
       console.log(formattedArr, "after formatting")
-      
+
         loading.current = false;
         console.log("End data" , loading  )
     });
@@ -174,7 +176,7 @@ function App() {
           
               <section>
               <h1>LATEST NEWS FROM BANKLESSHQ</h1>
-                <Title />
+                <Articles />
                 </section>
               <section className="ava" >
                 <img  src="https://renderapi.s3.amazonaws.com/xxo86RThN.png" alt="" />

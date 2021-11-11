@@ -1,0 +1,65 @@
+.App {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.container {
+  margin: 0px auto;
+}
+
+.scrapped
+{
+  position: relative;
+  color: black;
+  width: 800px;
+  top: -550px;
+  background-color: white;
+  margin: 0px auto;
+  height: 50vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: auto;
+  align-content: start;
+  outline: 9px solid #000;
+  outline-offset: -16px;
+}
+
+.scrapped > section{
+  flex: 1 1 auto;
+  margin: 30px;
+}
+
+section.ava {
+  text-align: right;
+  display: flex;
+  margin: 9px;
+}
+
+
+header {
+  position: relative;
+  color: black;
+  width: 800px;
+  top: -550px;
+  background-color: white;
+  margin: 10px auto;
+  outline: 9px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+header h1 {
+  margin: 10px;
+  justify-content: flex-start;
+}
+
+
+header h6 {
+  margin: 10px;
+  justify-content: flex-end;
+}
+

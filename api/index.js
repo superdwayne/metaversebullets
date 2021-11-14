@@ -1,5 +1,6 @@
 const PORT = 5000
 const axios = require('axios');
+const path = require('path');
 const cors = require('cors')
 const cheerio = require('cheerio');
 const express = require('express');
@@ -93,6 +94,13 @@ axios(banklesshq).then(function(ressponse)
         //   })
 
         }).catch(err => console.log(err))
+
+
+app.use(express.static(path.join(__dirname, '../build', )));
+
+app.get('*', (req, res) => {
+   res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
 
 
 app.listen(PORT, () => console.log(`Sever is running on PORT ${PORT}`))

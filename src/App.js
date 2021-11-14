@@ -1,5 +1,4 @@
 import React, { useLayoutEffect , useRef , Suspense,  useState, useEffect} from 'react'
-import ReactDOMServer from 'react-dom/server'
 import { Canvas,
   useFrame,
   extend,
@@ -48,69 +47,7 @@ function Line({ start, end }) {
   )
 }
 
-function Title()  {
-  
-  const loading = useRef(false);
-  const [shapes, setShapes] = useState(null);
 
-  useEffect(() => {
-
-    loading.current = true;
-    
-    console.log("inital load" , loading)
-
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    
-    // console.log("Component mounting.." , loading)
-    
-    console.log("Component mounting..",  loading )
-
-    if (loading.current === true) {
-
-      Request(`http://localhost:5000/api/index`, params, (response) => {
-        
-        let shape = response
-
-        console.log("retrieved data" , loading  )
-
-        setShapes(shape);
-
-      console.log(shape, "before formatting")
-
-      const formattedArr = shape.map((title, i) => {
-        return <h1 key={i} >{title}</h1>;
-    })
-
-
-    
-
-      setShapes(formattedArr.slice(0,3));
-
-    
-      console.log(formattedArr, "after formatting")
-      
-        loading.current = false;
-        console.log("End data" , loading  )
-    });
-
-  } else {
-    console.log('no data yet')
-  }
-
-  }, []);
-
-  return (
-    
-    shapes
-  )
-  
-}
 
 function Box() {
   const myMesh = React.useRef()
@@ -147,7 +84,7 @@ function Shapetest() {
 
 function Tron(){
   return(
-    <Canvas style={{ backgroundColor: "#000000" , height: "100vh", width: "100vw" }}>
+    <Canvas style={{ backgroundColor: "#000000" , height: "200vh", width: "100vw" }}>
      <Suspense fallback={'Loading'}>
      <CameraControls />
      {/* <Shapetest/> */}
@@ -158,6 +95,164 @@ function Tron(){
   )
 }
 
+function Articles()  {
+  
+  const loading = useRef(false);
+  const [shapes, setShapes] = useState(null);
+
+  useEffect(() => {
+
+    loading.current = true;
+    
+    console.log("inital load" , loading)
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+    if (loading.current === true) {
+
+      Request(`http://localhost:5000/api/index`, params, (response) => {
+        
+        let shape = response
+
+        console.log("retrieved data" , loading  )
+
+        // setShapes(Object.keys(shape));
+
+     // console.log(shape[0].atricleurl, "before formatting")
+
+
+      const formattedArr = Object.keys(shape).map((title, i) => {
+        return (
+        <span key={i}>
+          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
+            <h1>{shape[i].title}</h1>
+            <h4>{shape[i].preview}</h4>
+          </a>
+        </span>
+        );
+    })
+
+      setShapes(formattedArr.slice(0,3));
+    
+      //console.log(formattedArr, "after formatting")
+
+        loading.current = false;
+        console.log("End data" , loading  )
+    });
+
+  } else {
+    console.log('no data yet')
+  }
+
+  }, []);
+
+  return (
+    
+    shapes
+  )
+  
+}
+
+function Theverge() {
+  
+  const loading = useRef(false);
+  const [theverge, setTheverge] = useState(null);
+
+  useEffect(() => {
+
+    loading.current = true;
+    console.log("inital load" , loading)
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+      Request(`http://localhost:5000/theverge`, params, (response) => {
+
+
+        // console.log(response) 
+
+          const formattedArr = Object.keys(response).map((title, i) => {
+          return (
+           <span key={i}>
+             <a href={response[i].url} target="_blank" rel="noreferrer">
+               <h1>{response[i].title}</h1>
+               {/* <h4>{response[i].preview}</h4> */}
+             </a>
+           </span>
+           );
+       })
+              
+       setTheverge(formattedArr.slice(0,3))
+            
+    })
+
+  }, []);
+
+  return (theverge);
+  
+}
+
+
+function Xr() {
+  
+  const loading = useRef(false);
+  const [thexr, setThexr] = useState(null);
+
+  useEffect(() => {
+
+    loading.current = true;
+    console.log("inital load" , loading)
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+      Request(`http://localhost:5000/xrtoday`, params, (response) => {
+
+
+        console.log(response) 
+
+          const formattedArr = Object.keys(response).map((title, i) => {
+          return (
+           <span key={i}>
+             <a href={response[i].url} target="_blank" rel="noreferrer">
+               <h1>{response[i].title}</h1>
+             </a>
+           </span>
+           );
+       })
+              
+       setThexr(formattedArr.slice(0,3))
+            
+    })
+
+  }, []);
+
+  return (thexr);
+  
+}
+
 function App() {
   return (
     <div className="App">
@@ -166,7 +261,7 @@ function App() {
     <Tron />
    
       <header>
-            <h1>METAVERSE WEEKLY BULLET</h1>
+            <h1>METAVERSE BITES</h1>
             <h6>VERSION 3.0</h6>
         </header>
         
@@ -174,13 +269,45 @@ function App() {
           
               <section>
               <h1>LATEST NEWS FROM BANKLESSHQ</h1>
-                <Title />
+                <Articles />
                 </section>
               <section className="ava" >
                 <img  src="https://renderapi.s3.amazonaws.com/xxo86RThN.png" alt="" />
               </section>
           </section>  
       
+
+          <section className="scrapped">
+                 
+                  <section className="ava">
+                    <img src="https://renderapi.s3.amazonaws.com/r6QoNHjuY.png" alt="" />
+                  </section>
+                  
+                  <section>
+                  <h1>LATEST NEWS FROM FORTNITE(VIA VERGE)</h1>
+                  <Theverge />
+                  </section>
+
+                </section>
+
+
+                <section className="scrapped">
+
+                <section>
+                    <h1>LATEST NEWS FROM XRTODAY</h1>
+                    <Xr />
+                  </section>
+                 
+                  <section className="ava">
+                    <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
+                  </section>
+                  
+                 
+
+                </section>
+
+                
+
     </div>
 
   );

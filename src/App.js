@@ -1,4 +1,4 @@
-import React, { useLayoutEffect , useRef , Suspense,  useState, useEffect} from 'react'
+import React, {  useRef , Suspense,  useState, useEffect} from 'react'
 import { Canvas,
   useFrame,
   extend,
@@ -6,8 +6,6 @@ import { Canvas,
   import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Request from "./api/requests";
 import './App.css';
-import * as THREE from 'three'
-import { TetrahedronGeometry } from 'three';
 
 extend({ OrbitControls }); 
 
@@ -34,21 +32,6 @@ const CameraControls = () => {
   );
 };
 
-function Line({ start, end }) {
-  const ref = useRef()
-  useLayoutEffect(() => {
-    ref.current.geometry.setFromPoints([start, end].map((point) => new THREE.Vector3(...point)))
-  }, [start, end])
-  return (
-    <line ref={ref}>
-      <bufferGeometry />
-      <lineBasicMaterial color="hotpink" />
-    </line>
-  )
-}
-
-
-
 function Box() {
   const myMesh = React.useRef()
 
@@ -59,23 +42,6 @@ function Box() {
   return (
     <mesh ref={myMesh}  wireframe="true" rotation={[ 2, 0, 0]} scale={[2, 30, 50]}>
       <planeGeometry args={[50, 50 , 50]}  />
-      <meshStandardMaterial attach="material"  wireframe={true} color={"#ff00ff"} />
-    </mesh>
-    
-  )
-}
-
-function Shapetest() {
-  const myMesh = React.useRef()
-
-  useFrame(() => {
-   
-  })
-
-  return (
-    <mesh ref={myMesh}  wireframe="true"  >
-      {/* <octahedronGeometry args={[2, 2, 2]}  /> */}
-      <tetrahedronGeometry args={[3, 3, 3]}  smoothness={4} />
       <meshStandardMaterial attach="material"  wireframe={true} color={"#ff00ff"} />
     </mesh>
     
@@ -301,12 +267,9 @@ function App() {
                   <section className="ava">
                     <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
                   </section>
-                  
-                 
 
                 </section>
 
-                
 
     </div>
 

@@ -47,72 +47,7 @@ function Line({ start, end }) {
   )
 }
 
-function Articles()  {
-  
-  const loading = useRef(false);
-  const [shapes, setShapes] = useState(null);
 
-  useEffect(() => {
-
-    loading.current = true;
-    
-    console.log("inital load" , loading)
-
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    
-    // console.log("Component mounting.." , loading)
-    
-    console.log("Component mounting..",  loading )
-
-    if (loading.current === true) {
-
-      Request(`http://localhost:5000/api/index`, params, (response) => {
-        
-        let shape = response
-
-        console.log("retrieved data" , loading  )
-
-        // setShapes(Object.keys(shape));
-
-      console.log(shape[0].atricleurl, "before formatting")
-
-
-      const formattedArr = Object.keys(shape).map((title, i) => {
-        return (
-        <span key={i}>
-          <h1>{shape[i].title}</h1>
-          <h4>{shape[i].preview}</h4>
-        </span>
-        )
-        ;
-    })
-
-      setShapes(formattedArr.slice(0,2));
-    
-      console.log(formattedArr, "after formatting")
-
-        loading.current = false;
-        console.log("End data" , loading  )
-    });
-
-  } else {
-    console.log('no data yet')
-  }
-
-  }, []);
-
-  return (
-    
-    shapes
-  )
-  
-}
 
 function Box() {
   const myMesh = React.useRef()
@@ -149,7 +84,7 @@ function Shapetest() {
 
 function Tron(){
   return(
-    <Canvas style={{ backgroundColor: "#000000" , height: "100vh", width: "100vw" }}>
+    <Canvas style={{ backgroundColor: "#000000" , height: "200vh", width: "100vw" }}>
      <Suspense fallback={'Loading'}>
      <CameraControls />
      {/* <Shapetest/> */}
@@ -160,6 +95,118 @@ function Tron(){
   )
 }
 
+function Articles()  {
+  
+  const loading = useRef(false);
+  const [shapes, setShapes] = useState(null);
+
+  useEffect(() => {
+
+    loading.current = true;
+    
+    console.log("inital load" , loading)
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+    if (loading.current === true) {
+
+      Request(`http://localhost:5000/api/index`, params, (response) => {
+        
+        let shape = response
+
+        console.log("retrieved data" , loading  )
+
+        // setShapes(Object.keys(shape));
+
+      console.log(shape[0].atricleurl, "before formatting")
+
+
+      const formattedArr = Object.keys(shape).map((title, i) => {
+        return (
+        <span key={i}>
+          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
+            <h1>{shape[i].title}</h1>
+            <h4>{shape[i].preview}</h4>
+          </a>
+        </span>
+        );
+    })
+
+      setShapes(formattedArr.slice(0,3));
+    
+      console.log(formattedArr, "after formatting")
+
+        loading.current = false;
+        console.log("End data" , loading  )
+    });
+
+  } else {
+    console.log('no data yet')
+  }
+
+  }, []);
+
+  return (
+    
+    shapes
+  )
+  
+}
+
+function Opeansea() {
+  
+  const loading = useRef(false);
+  const [opensea, setopensea] = useState(null);
+
+  useEffect(() => {
+
+    loading.current = true;
+    console.log("inital load" , loading)
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+      Request(`http://localhost:5000/opensea`, params, (response) => {
+
+
+        // console.log(response) 
+
+          const formattedArr = Object.keys(response).map((title, i) => {
+          return (
+           <span key={i}>
+             <a href={response[i].url} target="_blank" rel="noreferrer">
+               <h1>{response[i].title}</h1>
+               {/* <h4>{response[i].preview}</h4> */}
+             </a>
+           </span>
+           );
+       })
+              
+            setopensea(formattedArr.slice(0,3))
+            
+    })
+
+  }, []);
+
+  return (opensea);
+  
+}
+
 function App() {
   return (
     <div className="App">
@@ -168,7 +215,7 @@ function App() {
     <Tron />
    
       <header>
-            <h1>METAVERSE WEEKLY BULLET</h1>
+            <h1>METAVERSE BITES</h1>
             <h6>VERSION 3.0</h6>
         </header>
         
@@ -183,6 +230,20 @@ function App() {
               </section>
           </section>  
       
+
+          <section className="scrapped">
+                 
+                  <section className="ava">
+                    <img src="https://renderapi.s3.amazonaws.com/r6QoNHjuY.png" alt="" />
+                  </section>
+                  
+                  <section>
+                  <h1>LATEST NEWS FROM FORTNITE(VIA VERGE)</h1>
+                  <Opeansea />
+                  </section>
+
+                </section>
+
     </div>
 
   );

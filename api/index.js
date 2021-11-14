@@ -7,28 +7,49 @@ const app = express()
 
 app.use(cors())
 
-const url = 'https://metaversal.banklesshq.com/'
+const banklesshq = 'https://metaversal.banklesshq.com/'
+const OpenSea = 'https://www.theverge.com/fortnite'
 
-app.get('/', async function (req, res) {
-    res.json('This is my web scraper')
+
+app.get('/opensea', function (req, res) {
+
+    axios(OpenSea).then(function(response)
+    {
+        const html = response.data
+        const $ = cheerio.load(html)
+        // console.log(html)
+        const openseaarticles = []
+       
+        $('.c-compact-river__entry', html).each((i , elm) => {
+            const title = $(elm).find('.c-entry-box--compact__title').text()
+            const artURL = $(elm).find('.c-entry-box--compact__image-wrapper').attr('href')
+            openseaarticles.push({
+            title: title,
+            url: artURL
+            })
+        })
+      
+       res.send(openseaarticles)
+       console.log(openseaarticles)
+            
+    }).catch(err => console.log(err))
+    
 })
 
-    axios(url)
-        .then(response => {
-            const html = response.data
+
+axios(banklesshq).then(function(ressponse)
+        {
+            const html = ressponse.data
             const $ = cheerio.load(html)
             const articles = []
-
-
             $('.post-preview-content', html).each((i , elm) => {
                 const title = $(elm).find('.post-preview-title').text()
                 const preview = $(elm).find('.post-preview-description').text()
-                const artURL = $(elm).find('.post-preview-title newsletter').attr('href')
+                const artURL = $(elm).find('.post-preview-title').attr('href')
                 articles.push({
                 title: title,
                 preview: preview,
-                atricleurl: artURL,
-                scrappedUrl: url,
+                atricleurl: artURL
                 })
             })
 

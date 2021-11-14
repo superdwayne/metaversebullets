@@ -79,19 +79,8 @@ axios(banklesshq).then(function(ressponse)
                 atricleurl: artURL
                 })
             })
-
-           //Todo Fine the url from the article page an pull that content in via a scrapped page
-
                 
         app.get('/api/index', (req, res) =>  { res.send(articles)  })
-
-        // app.get('/api/index', function (req, res, next) {
-        //     console.log('the response will be sent by the next function ...')
-        //     res.json(articles) 
-        //     next()
-        //   }, function (req, res) {
-        //     res.send(url)
-        //   })
 
         }).catch(err => console.log(err))
 

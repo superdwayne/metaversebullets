@@ -126,7 +126,7 @@ function Articles()  {
 
         // setShapes(Object.keys(shape));
 
-      console.log(shape[0].atricleurl, "before formatting")
+     // console.log(shape[0].atricleurl, "before formatting")
 
 
       const formattedArr = Object.keys(shape).map((title, i) => {
@@ -142,7 +142,7 @@ function Articles()  {
 
       setShapes(formattedArr.slice(0,3));
     
-      console.log(formattedArr, "after formatting")
+      //console.log(formattedArr, "after formatting")
 
         loading.current = false;
         console.log("End data" , loading  )
@@ -161,10 +161,10 @@ function Articles()  {
   
 }
 
-function Opeansea() {
+function Theverge() {
   
   const loading = useRef(false);
-  const [opensea, setopensea] = useState(null);
+  const [theverge, setTheverge] = useState(null);
 
   useEffect(() => {
 
@@ -181,7 +181,7 @@ function Opeansea() {
     
     console.log("Component mounting..",  loading )
 
-      Request(`http://localhost:5000/opensea`, params, (response) => {
+      Request(`http://localhost:5000/theverge`, params, (response) => {
 
 
         // console.log(response) 
@@ -197,13 +197,59 @@ function Opeansea() {
            );
        })
               
-            setopensea(formattedArr.slice(0,3))
+       setTheverge(formattedArr.slice(0,3))
             
     })
 
   }, []);
 
-  return (opensea);
+  return (theverge);
+  
+}
+
+
+function Xr() {
+  
+  const loading = useRef(false);
+  const [thexr, setThexr] = useState(null);
+
+  useEffect(() => {
+
+    loading.current = true;
+    console.log("inital load" , loading)
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+      Request(`http://localhost:5000/xrtoday`, params, (response) => {
+
+
+        console.log(response) 
+
+          const formattedArr = Object.keys(response).map((title, i) => {
+          return (
+           <span key={i}>
+             <a href={response[i].url} target="_blank" rel="noreferrer">
+               <h1>{response[i].title}</h1>
+             </a>
+           </span>
+           );
+       })
+              
+       setThexr(formattedArr.slice(0,3))
+            
+    })
+
+  }, []);
+
+  return (thexr);
   
 }
 
@@ -239,10 +285,28 @@ function App() {
                   
                   <section>
                   <h1>LATEST NEWS FROM FORTNITE(VIA VERGE)</h1>
-                  <Opeansea />
+                  <Theverge />
                   </section>
 
                 </section>
+
+
+                <section className="scrapped">
+
+                <section>
+                    <h1>LATEST NEWS FROM XRTODAY</h1>
+                    <Xr />
+                  </section>
+                 
+                  <section className="ava">
+                    <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
+                  </section>
+                  
+                 
+
+                </section>
+
+                
 
     </div>
 

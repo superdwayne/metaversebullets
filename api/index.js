@@ -8,34 +8,60 @@ const app = express()
 app.use(cors())
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
-const OpenSea = 'https://www.theverge.com/fortnite'
+const theverge = 'https://www.theverge.com/fortnite'
+const xrtoday = 'https://www.xrtoday.com/tag/metaverse/'
 
 
-app.get('/opensea', function (req, res) {
+app.get('/theverge', function (req, res) {
 
-    axios(OpenSea).then(function(response)
+    axios(theverge).then(function(response)
     {
         const html = response.data
         const $ = cheerio.load(html)
         // console.log(html)
-        const openseaarticles = []
+        const thevergearticles = []
        
         $('.c-compact-river__entry', html).each((i , elm) => {
             const title = $(elm).find('.c-entry-box--compact__title').text()
             const artURL = $(elm).find('.c-entry-box--compact__image-wrapper').attr('href')
-            openseaarticles.push({
+            thevergearticles.push({
             title: title,
             url: artURL
             })
         })
       
-       res.send(openseaarticles)
-       console.log(openseaarticles)
+       res.send(thevergearticles)
+    //    console.log(openseaarticles)
             
     }).catch(err => console.log(err))
     
 })
 
+
+app.get('/xrtoday', function (req, res) {
+
+    axios(xrtoday).then(function(response)
+    {
+        const html = response.data
+        const $ = cheerio.load(html)
+        // console.log(html)
+        const xrarticles = []
+       
+        $('.col-md-4', html).each((i , elm) => {
+            const title = $(elm).find('.font-weight-500').text()
+            // const artURL = $(elm).find('.single_uctv-inner').attr('href')
+            xrarticles.push({
+            title: title,
+            // url: artURL
+            })
+        })
+    //   console.log(xrarticles)
+       res.send(xrarticles)
+   
+            
+    }).catch(err => console.log(err))
+    
+})
 
 axios(banklesshq).then(function(ressponse)
         {

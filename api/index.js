@@ -9,6 +9,7 @@ const userModel = require("./models");
 const app = express()
 const connection = require("./server");
 const mongoose = require("mongoose");
+const articlesSchema = require("./schema");
 
 app.use(express.json());
 
@@ -38,16 +39,9 @@ axios(banklesshq).then(function(ressponse)
         })
     })
 
-    if (html) {
-
-        var articlesSchema = mongoose.Schema({
-            title: String,
-            preview: String,
-            // atricleurl: String,
-        });
 
         // compile schema to model
-        var blankessarticles = mongoose.model('Book', articlesSchema, 'Btest2');
+        const blankessarticles = mongoose.model('Book', articlesSchema, 'Btest5');
 
         // save model to database
         blankessarticles.collection.insertMany(articles, function (err, docs) {
@@ -60,18 +54,13 @@ axios(banklesshq).then(function(ressponse)
             }
         });
 
-        
         blankessarticles.find({}, function (err, users) {
             res.json(users);
         });
 
-       
-        //This method is to send the data without taking it from database
+                //This method is to send the data without taking it from database
         // res.send(articles)
 
-    } else {
-        console.log("No data has been scrapped")
-    }
 
 
 }).catch(err => console.log(err))

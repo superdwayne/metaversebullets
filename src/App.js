@@ -88,7 +88,7 @@ function Articles()  {
         
         let shape = response
 
-        console.log("retrieved data" , loading  )
+        // console.log(shape , "loading"  )
 
         // setShapes(Object.keys(shape));
 
@@ -98,17 +98,17 @@ function Articles()  {
       const formattedArr = Object.keys(shape).map((title, i) => {
         return (
         <span key={i}>
-          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
+          {/* <a href={shape[i].atricleurl} target="_blank" rel="noreferrer"> */}
             <h1>{shape[i].title}</h1>
             <h4>{shape[i].preview}</h4>
-          </a>
+          {/* </a> */}
         </span>
         );
     })
 
       setShapes(formattedArr.slice(0,3));
     
-      //console.log(formattedArr, "after formatting")
+      console.log(formattedArr, "after formatting")
 
         loading.current = false;
         console.log("End data" , loading  )
@@ -197,7 +197,7 @@ function Xr() {
       Request(`http://localhost:5000/xrtoday`, params, (response) => {
 
 
-        console.log(response) 
+        // console.log(response) 
 
           const formattedArr = Object.keys(response).map((title, i) => {
           return (

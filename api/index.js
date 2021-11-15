@@ -1,4 +1,5 @@
 const PORT = process.env.PORT || 5000
+const db = require("./server");
 const axios = require('axios');
 const path = require('path');
 const cors = require('cors')
@@ -7,7 +8,8 @@ const express = require('express');
 const router = express.Router();
 const userModel = require("./models");
 const app = express()
-const connection = require("./server");
+
+
 const mongoose = require("mongoose");
 const articlesSchema = require("./schema");
 
@@ -21,7 +23,6 @@ const xrtoday = 'https://www.xrtoday.com/tag/metaverse/'
 
 
 app.get('/api/index', function (req, res) {
-
 
 axios(banklesshq).then(function(ressponse)
 {
@@ -39,24 +40,37 @@ axios(banklesshq).then(function(ressponse)
         })
     })
 
-
+   
         // compile schema to model
-        const blankessarticles = mongoose.model('Book', articlesSchema, 'Btest5');
+        const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta2');
 
-        // save model to database
-        blankessarticles.collection.insertMany(articles, function (err, docs) {
-            if (err) {
-                return console.error(err);
-            } else {
-                // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                console.log(docs.insertedCount, "Enrties have been added to the database");
-
-            }
-        });
 
         blankessarticles.find({}, function (err, users) {
             res.json(users);
-        });
+
+           if (users.length >= 8) {
+
+               console.log('Too Many entries in the DB')
+
+           } else {
+
+               // save model to database
+               blankessarticles.collection.insertMany(articles, function (err, docs) {
+                   if (err) {
+                       return console.error(err);
+                   } else {
+                       // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+                       console.log(docs.insertedCount, "Enrties have been added to the database");
+
+                   }
+               });
+           }
+           });
+    
+
+        
+
+        
 
                 //This method is to send the data without taking it from database
         // res.send(articles)

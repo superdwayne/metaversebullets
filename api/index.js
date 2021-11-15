@@ -1,16 +1,84 @@
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 const axios = require('axios');
 const path = require('path');
 const cors = require('cors')
 const cheerio = require('cheerio');
 const express = require('express');
+const router = express.Router();
+const userModel = require("./models");
 const app = express()
+const connection = require("./server");
+const mongoose = require("mongoose");
+
+app.use(express.json());
 
 app.use(cors())
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
 const theverge = 'https://www.theverge.com/fortnite'
 const xrtoday = 'https://www.xrtoday.com/tag/metaverse/'
+
+
+app.get('/api/index', function (req, res) {
+
+
+axios(banklesshq).then(function(ressponse)
+{
+    const html = ressponse.data
+    const $ = cheerio.load(html)
+    const articles = []
+    $('.post-preview-content', html).each((i , elm) => {
+        const title = $(elm).find('.post-preview-title').text()
+        const preview = $(elm).find('.post-preview-description').text()
+        // const artURL = $(elm).find('.post-preview-title').attr('href')
+        articles.push({
+        title: title,
+        preview: preview,
+        // atricleurl: artURL
+        })
+    })
+
+    if (html) {
+
+        var articlesSchema = mongoose.Schema({
+            title: String,
+            preview: String,
+            // atricleurl: String,
+        });
+
+        // compile schema to model
+        var blankessarticles = mongoose.model('Book', articlesSchema, 'Btest2');
+
+        // save model to database
+        blankessarticles.collection.insertMany(articles, function (err, docs) {
+            if (err) {
+                return console.error(err);
+            } else {
+                // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+                console.log(docs.insertedCount, "Enrties have been added to the database");
+
+            }
+        });
+
+        
+        blankessarticles.find({}, function (err, users) {
+            res.json(users);
+        });
+
+       
+        //This method is to send the data without taking it from database
+        // res.send(articles)
+
+    } else {
+        console.log("No data has been scrapped")
+    }
+
+
+}).catch(err => console.log(err))
+
+
+})
+
 
 
 app.get('/theverge', function (req, res) {
@@ -64,32 +132,17 @@ app.get('/xrtoday', function (req, res) {
     
 })
 
-axios(banklesshq).then(function(ressponse)
-        {
-            const html = ressponse.data
-            const $ = cheerio.load(html)
-            const articles = []
-            $('.post-preview-content', html).each((i , elm) => {
-                const title = $(elm).find('.post-preview-title').text()
-                const preview = $(elm).find('.post-preview-description').text()
-                const artURL = $(elm).find('.post-preview-title').attr('href')
-                articles.push({
-                title: title,
-                preview: preview,
-                atricleurl: artURL
-                })
-            })
-                
-        app.get('/api/index', (req, res) =>  { res.send(articles)  })
-
-        }).catch(err => console.log(err))
 
 
-app.use(express.static(path.join(__dirname, '../build', )));
-
-app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, '../build')));
+  // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    });
+  }
+  
 
 
 app.listen(PORT, () => console.log(`Sever is running on PORT ${PORT}`))

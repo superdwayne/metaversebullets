@@ -84,11 +84,11 @@ function Articles()  {
 
     if (loading.current === true) {
 
-      Request(`http://localhost:5000/api/index`, params, (response) => {
+      Request(`http://localhost:5000/api/banklesshq`, params, (response) => {
         
         let shape = response
 
-        // console.log(shape , "loading"  )
+        console.log(shape , "loading"  )
 
         // setShapes(Object.keys(shape));
 
@@ -127,97 +127,97 @@ function Articles()  {
   
 }
 
-function Theverge() {
+// function Theverge() {
   
-  const loading = useRef(false);
-  const [theverge, setTheverge] = useState(null);
+//   const loading = useRef(false);
+//   const [theverge, setTheverge] = useState(null);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    loading.current = true;
-    console.log("inital load" , loading)
+//     loading.current = true;
+//     console.log("inital load" , loading)
 
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     };
     
-    console.log("Component mounting..",  loading )
+//     console.log("Component mounting..",  loading )
 
-      Request(`http://localhost:5000/theverge`, params, (response) => {
+//       Request(`http://localhost:5000/api/theverge`, params, (response) => {
 
 
-        // console.log(response) 
+//         // console.log(response) 
 
-          const formattedArr = Object.keys(response).map((title, i) => {
-          return (
-           <span key={i}>
-             <a href={response[i].url} target="_blank" rel="noreferrer">
-               <h1>{response[i].title}</h1>
-               {/* <h4>{response[i].preview}</h4> */}
-             </a>
-           </span>
-           );
-       })
+//           const formattedArr = Object.keys(response).map((title, i) => {
+//           return (
+//            <span key={i}>
+//              <a href={response[i].url} target="_blank" rel="noreferrer">
+//                <h1>{response[i].title}</h1>
+//                {/* <h4>{response[i].preview}</h4> */}
+//              </a>
+//            </span>
+//            );
+//        })
               
-       setTheverge(formattedArr.slice(0,3))
+//        setTheverge(formattedArr.slice(0,3))
             
-    })
+//     })
 
-  }, []);
+//   }, []);
 
-  return (theverge);
+//   return (theverge);
   
-}
+// }
 
 
-function Xr() {
+// function Xr() {
   
-  const loading = useRef(false);
-  const [thexr, setThexr] = useState(null);
+//   const loading = useRef(false);
+//   const [thexr, setThexr] = useState(null);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    loading.current = true;
-    console.log("inital load" , loading)
+//     loading.current = true;
+//     console.log("inital load" , loading)
 
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     };
     
-    console.log("Component mounting..",  loading )
+//     console.log("Component mounting..",  loading )
 
-      Request(`http://localhost:5000/xrtoday`, params, (response) => {
+//       Request(`http://localhost:5000/api/xrtoday`, params, (response) => {
 
 
-        // console.log(response) 
+//         // console.log(response) 
 
-          const formattedArr = Object.keys(response).map((title, i) => {
-          return (
-           <span key={i}>
-             <a href={response[i].url} target="_blank" rel="noreferrer">
-               <h1>{response[i].title}</h1>
-             </a>
-           </span>
-           );
-       })
+//           const formattedArr = Object.keys(response).map((title, i) => {
+//           return (
+//            <span key={i}>
+//              <a href={response[i].url} target="_blank" rel="noreferrer">
+//                <h1>{response[i].title}</h1>
+//              </a>
+//            </span>
+//            );
+//        })
               
-       setThexr(formattedArr.slice(0,3))
+//        setThexr(formattedArr.slice(0,3))
             
-    })
+//     })
 
-  }, []);
+//   }, []);
 
-  return (thexr);
+//   return (thexr);
   
-}
+// }
 
 function App() {
   return (
@@ -243,7 +243,7 @@ function App() {
           </section>  
       
 
-          <section className="scrapped">
+          {/* <section className="scrapped">
                  
                   <section className="ava">
                     <img src="https://renderapi.s3.amazonaws.com/r6QoNHjuY.png" alt="" />
@@ -268,7 +268,7 @@ function App() {
                     <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
                   </section>
 
-                </section>
+                </section> */}
 
 
     </div>

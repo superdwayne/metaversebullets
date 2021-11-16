@@ -13,7 +13,7 @@ const app = express()
 const mongoose = require("mongoose");
 const articlesSchema = require("./schema");
 
-app.use(express.json());
+app.use(express.json({extended: false}));
 
 app.use(cors())
 

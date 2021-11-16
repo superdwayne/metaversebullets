@@ -32,28 +32,24 @@ axios(banklesshq).then(function(ressponse)
     $('.post-preview-content', html).each((i , elm) => {
         const title = $(elm).find('.post-preview-title').text()
         const preview = $(elm).find('.post-preview-description').text()
-        // const artURL = $(elm).find('.post-preview-title').attr('href')
+        const artURL = $(elm).find('a').attr('href')
         articles.push({
         title: title,
         preview: preview,
-        // atricleurl: artURL
+        atricleurl: artURL
         })
     })
-
    
         // compile schema to model
-        const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta2');
+        const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta3');
 
 
         blankessarticles.find({}, function (err, users) {
-            res.json(users);
+            res.send(users);
 
            if (users.length >= 8) {
-
                console.log('Too Many entries in the DB')
-
            } else {
-
                // save model to database
                blankessarticles.collection.insertMany(articles, function (err, docs) {
                    if (err) {

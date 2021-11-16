@@ -7,9 +7,9 @@ const articlesSchema = require("./schema");
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
 
-router.get('/', function (req, res) {
+router.get('/',  async function (req, res) {
 
-    axios(banklesshq).then(function(ressponse)
+    await axios(banklesshq).then(function(ressponse)
     {
         const html = ressponse.data
         const $ = cheerio.load(html)

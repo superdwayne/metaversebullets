@@ -98,10 +98,10 @@ function Articles()  {
       const formattedArr = Object.keys(shape).map((title, i) => {
         return (
         <span key={i}>
-          {/* <a href={shape[i].atricleurl} target="_blank" rel="noreferrer"> */}
+          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
             <h1>{shape[i].title}</h1>
             <h4>{shape[i].preview}</h4>
-          {/* </a> */}
+          </a>
         </span>
         );
     })

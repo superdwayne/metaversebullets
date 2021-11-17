@@ -106,7 +106,7 @@ function Articles()  {
         );
     })
 
-      setShapes(formattedArr.slice(0,3));
+      setShapes(shape);
     
       console.log(formattedArr, "after formatting")
 

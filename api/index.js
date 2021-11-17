@@ -11,14 +11,6 @@ const theverge = require("./theverge");
 const xrtoday = require("./xrtoday");
 
 
-const BuiltTime = require('../build');
-module.exports = (req, res) => {
-  res.setHeader('content-type', 'text/plain');
-  res.send(`
-    This Serverless Function was built at ${new Date(BuiltTime)}.
-    The current time is ${new Date()}
-  `);
-};
 
 app.use("/api/banklesshq", cors() , blankless);
 app.use("/api/theverge", cors() , theverge);

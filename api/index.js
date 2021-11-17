@@ -18,7 +18,6 @@ app.use("/api/banklesshq", cors() , blankless);
 app.use("/api/theverge", cors() , theverge);
 app.use("/api/xrtoday", cors() , xrtoday);
 
-app.use(express.json({extended: false}));
 
 app.use(cors())
 

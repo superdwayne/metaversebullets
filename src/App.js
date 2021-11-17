@@ -84,7 +84,7 @@ function Articles()  {
 
     if (loading.current === true) {
 
-      Request(`/api`, params, (response) => {
+      Request(`http://localhost:5000/api`, params, (response) => {
         
         let shape = response
 

@@ -1,8 +1,11 @@
-const PORT = process.env.PORT || 5000
+
 const db = require("./server");
 const cors = require('cors')
 const app = require('express')();
+const dotenv = require('dotenv');
+dotenv.config();
 
+const PORT = process.env.PORT 
 const blankless = require("./banklesshq");
 const theverge = require("./theverge");
 const xrtoday = require("./xrtoday");

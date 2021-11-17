@@ -1,1 +1,0 @@
-module.exports = 'Tue Nov 16 2021 20:50:59 GMT+0000 (Greenwich Mean Time)'

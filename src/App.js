@@ -84,7 +84,7 @@ function Articles()  {
 
     if (loading.current === true) {
 
-      Request(`http://localhost:5000/api/banklesshq`, params, (response) => {
+      Request(`http://localhost:5000/api`, params, (response) => {
         
         let shape = response
 
@@ -106,7 +106,7 @@ function Articles()  {
         );
     })
 
-      setShapes(formattedArr.slice(0,3));
+      setShapes(shape);
     
       console.log(formattedArr, "after formatting")
 

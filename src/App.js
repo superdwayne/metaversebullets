@@ -84,7 +84,7 @@ function Articles()  {
 
     if (loading.current === true) {
 
-      Request(`metaversebullets.vercel.app/api/banklesshq`, params, (response) => {
+      Request(`/api`, params, (response) => {
         
         let shape = response
 

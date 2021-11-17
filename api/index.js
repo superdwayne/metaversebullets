@@ -1,10 +1,7 @@
 const PORT = process.env.PORT || 5000
 const db = require("./server");
 const cors = require('cors')
-const express = require('express');
-
-
-const app = express()
+const app = require('express')();
 
 const blankless = require("./banklesshq");
 const theverge = require("./theverge");

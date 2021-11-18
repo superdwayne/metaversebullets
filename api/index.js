@@ -36,7 +36,7 @@ app.get('/banklesshqendpoint', cors(), (req, res) => {
         })
        
             // compile schema to model
-            const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta929');
+            const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta99');
     
             blankessarticles.find({}, function (err, users) {
                 res.send(users);

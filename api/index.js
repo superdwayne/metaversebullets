@@ -19,7 +19,6 @@ const banklesshq = 'https://metaversal.banklesshq.com/'
 
 app.get('/api', cors(), (req, res) => {
     
-
      axios(banklesshq).then(function(ressponse)
     {
         const html = ressponse.data
@@ -37,12 +36,11 @@ app.get('/api', cors(), (req, res) => {
         })
        
             // compile schema to model
-            const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta99');
-    
+            const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta929');
     
             blankessarticles.find({}, function (err, users) {
                 res.send(users);
-    
+
                if (users.length >= 8) {
                    console.log('Too Many entries in the DB')
                } else {
@@ -59,15 +57,10 @@ app.get('/api', cors(), (req, res) => {
                }
                });
         
-                    //This method is to send the data without taking it from database
-            // res.send(articles)
-    
-    
     
     }).catch(err => console.log(err))
     
-    // const { name = 'World' } = req.query;
-    // res.json(`Hello ${name}!`);
+
 
   });
 

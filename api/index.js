@@ -64,53 +64,53 @@ app.get('/banklesshq', cors(), (req, res) => {
 
   });
 
-  app.get('/theverge', cors(), (req, res) => {
+//   app.get('/theverge', cors(), (req, res) => {
     
-    axios(theverge).then(function(ressponse)
-   {
-       const html = ressponse.data
-       const $ = cheerio.load(html)
-       const thevergearticles = []
-       $('.c-compact-river__entry', html).each((i , elm) => {
-        const title = $(elm).find('.c-entry-box--compact__title').text()
-        const artURL = $(elm).find('.c-entry-box--compact__image-wrapper').attr('href')
-        thevergearticles.push({
-        title: title,
-        url: artURL
-        })
-    })
+//     axios(theverge).then(function(ressponse)
+//    {
+//        const html = ressponse.data
+//        const $ = cheerio.load(html)
+//        const thevergearticles = []
+//        $('.c-compact-river__entry', html).each((i , elm) => {
+//         const title = $(elm).find('.c-entry-box--compact__title').text()
+//         const artURL = $(elm).find('.c-entry-box--compact__image-wrapper').attr('href')
+//         thevergearticles.push({
+//         title: title,
+//         url: artURL
+//         })
+//     })
 
-       //res.send(thevergearticles)
+//        //res.send(thevergearticles)
       
-           const theverge = mongoose.model('Verge', thevergeSchema, 'theverge');
+//            const theverge = mongoose.model('Verge', thevergeSchema, 'theverge');
    
-           theverge.find({}, function (err, users) {
-               res.send(users);
+//            theverge.find({}, function (err, users) {
+//                res.send(users);
 
-            //    console.log(users)
+//             //    console.log(users)
 
-              if (users.length >= 8) {
-                  console.log('Too Many entries in the DB')
-              } else {
-                  // save model to database
-                  theverge.collection.insertMany(thevergearticles, function (err, docs) {
-                      if (err) {
-                          return console.error(err);
-                      } else {
-                          // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                          console.log(docs.insertedCount, "Enrties have been added to the database");
+//               if (users.length >= 8) {
+//                   console.log('Too Many entries in the DB')
+//               } else {
+//                   // save model to database
+//                   theverge.collection.insertMany(thevergearticles, function (err, docs) {
+//                       if (err) {
+//                           return console.error(err);
+//                       } else {
+//                           // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+//                           console.log(docs.insertedCount, "Enrties have been added to the database");
    
-                      }
-                  });
-              }
-              });
+//                       }
+//                   });
+//               }
+//               });
        
    
-   }).catch(err => console.log(err))
+//    }).catch(err => console.log(err))
    
 
 
- });
+//  });
 
 
 

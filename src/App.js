@@ -251,7 +251,7 @@ function App() {
                  
                  <section>
                  <h1>LATEST NEWS FROM FORTNITE(VIA VERGE)</h1>
-                 <Theverge />
+                 {/* <Theverge /> */}
                  </section>
 
                </section>

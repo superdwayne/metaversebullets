@@ -1,4 +1,6 @@
 {
-    "rewrites": [{ "source": "/blank/(.*)", "destination": "/blank" }]
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" },
+      { "source": "/theverge", "destination": "/theverge" }
+    ]
     
   }

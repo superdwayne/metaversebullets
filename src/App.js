@@ -85,7 +85,7 @@ function Articles()  {
     console.log("Component mounting..",  loading )
 
 
-      Request(`/api`, params, (response) => {
+      Request(`/blank`, params, (response) => {
         
         let shape = JSON.parse(JSON.stringify(response))
 

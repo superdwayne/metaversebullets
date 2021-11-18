@@ -18,7 +18,7 @@ const banklesshq = 'https://metaversal.banklesshq.com/'
 const theverges = 'https://www.theverge.com/fortnite'
 
 
-app.get('/blank', cors(), (req, res) => {
+app.get('/api', cors(), (req, res) => {
     
      axios(banklesshq).then(function(ressponse)
     {
@@ -114,7 +114,6 @@ app.get('/theverge', cors(), (req, res) => {
  });
 
 app.use("/api/banklesshq", cors() , blankless);
-app.use("/api/theverge", cors() , theverge);
 app.use("/api/xrtoday", cors() , xrtoday);
 
 

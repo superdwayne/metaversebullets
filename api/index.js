@@ -6,6 +6,7 @@ const cheerio = require('cheerio');
 const mongoose = require("mongoose");
 const articlesSchema = require("./schema");
 const thevergeSchema = require("./thevergeschema");
+
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -114,6 +115,10 @@ app.get('/theverge', cors(), (req, res) => {
 
 
 app.use(cors())
+
+if (process.env.NODE_ENV === "production") {
+    app.use(app.static("../build"));
+  }
 
 
 app.listen(PORT, () => console.log(`Sever is running on PORT ${PORT}`))

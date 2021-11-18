@@ -1,4 +1,3 @@
-
 const db = require("./server");
 const cors = require('cors')
 const app = require('express')();
@@ -6,18 +5,18 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const mongoose = require("mongoose");
 const articlesSchema = require("./schema");
-const thevergeSchema = require("./thevergeschema");
 const dotenv = require('dotenv');
 dotenv.config();
 
 const PORT = process.env.PORT 
-
+const blankless = require("./banklesshq");
+const theverge = require("./theverge");
+const xrtoday = require("./xrtoday");
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
-const theverge = 'https://www.theverge.com/fortnite'
 
 
-app.get('/banklesshqendpoint', cors(), (req, res) => {
+app.get('/api', cors(), (req, res) => {
     
      axios(banklesshq).then(function(ressponse)
     {
@@ -36,7 +35,7 @@ app.get('/banklesshqendpoint', cors(), (req, res) => {
         })
        
             // compile schema to model
-            const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta99');
+            const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta929');
     
             blankessarticles.find({}, function (err, users) {
                 res.send(users);
@@ -64,54 +63,10 @@ app.get('/banklesshqendpoint', cors(), (req, res) => {
 
   });
 
-//   app.get('/theverge', cors(), (req, res) => {
-    
-//     axios(theverge).then(function(ressponse)
-//    {
-//        const html = ressponse.data
-//        const $ = cheerio.load(html)
-//        const thevergearticles = []
-//        $('.c-compact-river__entry', html).each((i , elm) => {
-//         const title = $(elm).find('.c-entry-box--compact__title').text()
-//         const artURL = $(elm).find('.c-entry-box--compact__image-wrapper').attr('href')
-//         thevergearticles.push({
-//         title: title,
-//         url: artURL
-//         })
-//     })
 
-//        //res.send(thevergearticles)
-      
-//            const theverge = mongoose.model('Verge', thevergeSchema, 'theverge');
-   
-//            theverge.find({}, function (err, users) {
-//                res.send(users);
-
-//             //    console.log(users)
-
-//               if (users.length >= 8) {
-//                   console.log('Too Many entries in the DB')
-//               } else {
-//                   // save model to database
-//                   theverge.collection.insertMany(thevergearticles, function (err, docs) {
-//                       if (err) {
-//                           return console.error(err);
-//                       } else {
-//                           // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-//                           console.log(docs.insertedCount, "Enrties have been added to the database");
-   
-//                       }
-//                   });
-//               }
-//               });
-       
-   
-//    }).catch(err => console.log(err))
-   
-
-
-//  });
-
+app.use("/api/banklesshq", cors() , blankless);
+app.use("/api/theverge", cors() , theverge);
+app.use("/api/xrtoday", cors() , xrtoday);
 
 
 app.use(cors())

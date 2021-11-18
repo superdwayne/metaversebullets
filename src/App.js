@@ -89,7 +89,7 @@ function Articles()  {
         
         let shape = JSON.parse(JSON.stringify(response))
 
-       // console.log(shape , "loading"  )
+      //  console.log(shape , "loading"  )
       // setShapes(Object.keys(shape));
      // console.log(shape[0].atricleurl, "before formatting")
 
@@ -148,7 +148,7 @@ function Theverge() {
 
         console.log(response, "before formatting") 
 
-        let res = JSON.parse(JSON.stringify(response))
+        let res = response
 
         console.log(res, "after formatting") 
 

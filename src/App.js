@@ -146,6 +146,8 @@ function Theverge() {
 
       Request(`/theverge`, params, (response) => {
 
+        console.log(response, "before formatting") 
+
         let res = JSON.parse(JSON.stringify(response))
 
         console.log(res, "after formatting") 

@@ -144,7 +144,7 @@ function Theverge() {
     
     console.log("Component mounting..",  loading )
 
-      Request(`/theverge`, params, (response) => {
+      Request(`/api/theverge`, params, (response) => {
 
         console.log(response, "before formatting") 
 
@@ -168,7 +168,8 @@ function Theverge() {
 
   }, []);
 
-  return theverge;
+  return (
+    theverge);
   
 }
 

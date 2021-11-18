@@ -79,6 +79,7 @@ function Articles()  {
       body: JSON.stringify(),
       headers: {
         'Content-Type': 'application/json',
+        
       },
     };
     
@@ -139,6 +140,7 @@ function Theverge() {
       body: JSON.stringify(),
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
     };
     

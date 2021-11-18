@@ -116,10 +116,6 @@ app.get('/theverge', cors(), (req, res) => {
 
 app.use(cors())
 
-if (process.env.NODE_ENV === "production") {
-    app.use(app.static("../build"));
-  }
-
 
 app.listen(PORT, () => console.log(`Sever is running on PORT ${PORT}`))
 

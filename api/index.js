@@ -16,7 +16,7 @@ const xrtoday = require("./xrtoday");
 const banklesshq = 'https://metaversal.banklesshq.com/'
 
 
-app.get('/api', cors(), (req, res) => {
+app.get('/bank', cors(), (req, res) => {
     
      axios(banklesshq).then(function(ressponse)
     {

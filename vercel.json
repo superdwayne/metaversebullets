@@ -1,3 +1,5 @@
 {
-    "rewrites": [{ "source": "/test/(.*)", "destination": "/test" }]
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" } ,
+    { "source": "/theverge/(.*)" , "destination": "/theverge"  }]
+    
   }

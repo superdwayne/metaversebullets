@@ -90,9 +90,7 @@ function Articles()  {
         let shape = JSON.parse(JSON.stringify(response))
 
        // console.log(shape , "loading"  )
-
-        // setShapes(Object.keys(shape));
-
+      // setShapes(Object.keys(shape));
      // console.log(shape[0].atricleurl, "before formatting")
 
 
@@ -126,51 +124,51 @@ function Articles()  {
   
 }
 
-// function Theverge() {
+function Theverge() {
   
-//   const loading = useRef(false);
-//   const [theverge, setTheverge] = useState(null);
+  const loading = useRef(false);
+  const [theverge, setTheverge] = useState(null);
 
-//   useEffect(() => {
+  useEffect(() => {
 
-//     loading.current = true;
-//     console.log("inital load" , loading)
+    loading.current = true;
+    console.log("inital load" , loading)
 
-//     const params = {
-//       method: 'GET',
-//       body: JSON.stringify(),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     };
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
     
-//     console.log("Component mounting..",  loading )
+    console.log("Component mounting..",  loading )
 
-//       Request(`/theverge`, params, (response) => {
+      Request(`/api/theverge`, params, (response) => {
 
 
-//         console.log(response, "after formatting") 
+        console.log(response, "after formatting") 
 
-//           const formattedArr = Object.keys(response).map((title, i) => {
-//           return (
-//            <span key={i}>
-//              <a href={response[i].url} target="_blank" rel="noreferrer">
-//                <h1>{response[i].title}</h1>
-//                {/* <h4>{response[i].preview}</h4> */}
-//              </a>
-//            </span>
-//            );
-//        })
+          const formattedArr = Object.keys(response).map((title, i) => {
+          return (
+           <span key={i}>
+             <a href={response[i].url} target="_blank" rel="noreferrer">
+               <h1>{response[i].title}</h1>
+               {/* <h4>{response[i].preview}</h4> */}
+             </a>
+           </span>
+           );
+       })
               
-//        setTheverge(formattedArr.slice(0,3))
+       setTheverge(formattedArr.slice(0,3))
             
-//     })
+    })
 
-//   }, []);
+  }, []);
 
-//   return (theverge);
+  return (theverge);
   
-// }
+}
 
 
 // function Xr() {
@@ -251,7 +249,7 @@ function App() {
                  
                  <section>
                  <h1>LATEST NEWS FROM FORTNITE(VIA VERGE)</h1>
-                 {/* <Theverge /> */}
+                 <Theverge />
                  </section>
 
                </section>

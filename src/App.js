@@ -144,7 +144,7 @@ function Theverge() {
     
     console.log("Component mounting..",  loading )
 
-      Request(`/api/theverge`, params, (response) => {
+      Request(`/theverge`, params, (response) => {
 
         console.log(response, "before formatting") 
 

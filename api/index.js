@@ -17,7 +17,7 @@ const banklesshq = 'https://metaversal.banklesshq.com/'
 const theverge = 'https://www.theverge.com/fortnite'
 
 
-app.get('/banklesshq', cors(), (req, res) => {
+app.get('/banklesshqendpoint', cors(), (req, res) => {
     
      axios(banklesshq).then(function(ressponse)
     {

@@ -85,7 +85,7 @@ function Articles()  {
     console.log("Component mounting..",  loading )
 
 
-      Request(`/banklesshq`, params, (response) => {
+      Request(`/banklesshqendpoint`, params, (response) => {
         
         let shape = JSON.parse(JSON.stringify(response))
 

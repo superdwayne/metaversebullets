@@ -150,7 +150,7 @@ function Theverge() {
 
         console.log(res, "after formatting") 
 
-          const formattedArr = Object.keys(res).map((title, i) => {
+          const formattedArr2 = Object.keys(res).map((title, i) => {
           return (
            <span key={i}>
              <a href={res[i].url} target="_blank" rel="noreferrer">
@@ -161,7 +161,7 @@ function Theverge() {
            );
        })
               
-       setTheverge(formattedArr.slice(0,3))
+       setTheverge(formattedArr2.slice(0,3))
             
     })
 

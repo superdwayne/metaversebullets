@@ -157,7 +157,6 @@ function Theverge() {
            <span key={i}>
              <a href={res[i].url} target="_blank" rel="noreferrer">
                <h1>{res[i].title}</h1>
-               {/* <h4>{response[i].preview}</h4> */}
              </a>
            </span>
            );
@@ -169,7 +168,7 @@ function Theverge() {
 
   }, []);
 
-  return (theverge);
+  return theverge;
   
 }
 

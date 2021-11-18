@@ -11,7 +11,6 @@ dotenv.config();
 
 const PORT = process.env.PORT 
 const blankless = require("./banklesshq");
-// const theverge = require("./theverge");
 const xrtoday = require("./xrtoday");
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
@@ -83,7 +82,7 @@ app.get('/theverge', cors(), (req, res) => {
 
        //res.send(thevergearticles)
       
-           const theverge = mongoose.model('Verge', thevergeSchema, 'theverge');
+           const theverge = mongoose.model('Verge', thevergeSchema, 'theverge2');
    
            theverge.find({}, function (err, users) {
                res.send(users);
@@ -112,9 +111,6 @@ app.get('/theverge', cors(), (req, res) => {
 
 
  });
-
-app.use("/api/banklesshq", cors() , blankless);
-app.use("/api/xrtoday", cors() , xrtoday);
 
 
 app.use(cors())

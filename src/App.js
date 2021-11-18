@@ -144,16 +144,17 @@ function Theverge() {
     
     console.log("Component mounting..",  loading )
 
-      Request(`/api/theverge`, params, (response) => {
+      Request(`/theverge`, params, (response) => {
 
+        let res = JSON.parse(JSON.stringify(response))
 
-        console.log(response, "after formatting") 
+        console.log(res, "after formatting") 
 
-          const formattedArr = Object.keys(response).map((title, i) => {
+          const formattedArr = Object.keys(res).map((title, i) => {
           return (
            <span key={i}>
-             <a href={response[i].url} target="_blank" rel="noreferrer">
-               <h1>{response[i].title}</h1>
+             <a href={res[i].url} target="_blank" rel="noreferrer">
+               <h1>{res[i].title}</h1>
                {/* <h4>{response[i].preview}</h4> */}
              </a>
            </span>

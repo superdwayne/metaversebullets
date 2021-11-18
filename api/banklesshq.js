@@ -7,7 +7,7 @@ const articlesSchema = require("./schema");
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
 
-router.get('/',  function (req, res) {
+router.get('/',   function (req, res) {
 
      axios(banklesshq).then(function(ressponse)
     {

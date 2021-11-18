@@ -4,7 +4,7 @@ import { Canvas,
   extend,
   useThree, } from '@react-three/fiber'
   import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import Request from "./api/requests";
+import Request from "./requests";
 import './App.css';
 
 extend({ OrbitControls }); 
@@ -68,6 +68,8 @@ function Articles()  {
 
   useEffect(() => {
 
+    console.log(process.env.NODE_ENV)
+
     loading.current = true;
     
     console.log("inital load" , loading)
@@ -82,11 +84,10 @@ function Articles()  {
     
     console.log("Component mounting..",  loading )
 
-    if (loading.current === true) {
 
-      Request(`/api`, params, (response) => {
+      Request(`http://localhost:5000/api`, params, (response) => {
         
-        let shape = response
+        let shape = JSON.parse(JSON.stringify(response))
 
         console.log(shape , "loading"  )
 
@@ -114,9 +115,7 @@ function Articles()  {
         console.log("End data" , loading  )
     });
 
-  } else {
-    console.log('no data yet')
-  }
+ 
 
   }, []);
 

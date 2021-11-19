@@ -143,7 +143,7 @@ function Theverge() {
         'Accept': 'application/json',
       },
     };
-    
+     
     console.log("Component mounting..",  loading )
 
       Request(`/api/theverge`, params, (response) => {

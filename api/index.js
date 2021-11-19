@@ -65,7 +65,9 @@ app.get('/api', cors(), (req, res) => {
 
   });
 
-app.get('/theverge', cors(), (req, res) => {
+app.get('/api/theverge', cors(), (req, res) => {
+
+    res.setHeader('Content-Type', 'text/html');
     
     axios(theverges).then(function(ressponse)
    {

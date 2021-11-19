@@ -65,11 +65,11 @@ app.get('/api', cors(), (req, res) => {
 
   });
 
-app.get('/api/theverge', cors(), (req, res) => {
+app.get('/api/theverge', async (req, res) => {
 
     res.setHeader('Content-Type', 'text/html');
     
-    axios(theverges).then(function(ressponse)
+  await  axios(theverges).then(function(ressponse)
    {
        const html = ressponse.data
        const $ = cheerio.load(html)

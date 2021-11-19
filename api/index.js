@@ -67,7 +67,7 @@ app.get('/api', cors(), (req, res) => {
 
 app.get('/api/theverge', async (req, res) => {
 
-    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Content-Type', 'application/json');
     
   await  axios(theverges).then(function(ressponse)
    {
@@ -83,14 +83,14 @@ app.get('/api/theverge', async (req, res) => {
         })
     })
 
-       //res.send(thevergearticles)
+       console.log(thevergearticles)
       
            const theverge = mongoose.model('Verge', thevergeSchema, 'theverge2');
    
            theverge.find({}, function (err, users) {
                res.send(users);
 
-            //    console.log(users)
+               console.log(users)
 
               if (users.length >= 8) {
                   console.log('Too Many entries in the DB')

@@ -1,6 +1,4 @@
 {
-  "static": {
-    "public": "build",
     "rewrites": [
       {
         "source": "/api/(.*)",
@@ -8,4 +6,3 @@
       }
     ]
   }
-}

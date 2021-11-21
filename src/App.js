@@ -157,9 +157,9 @@ function Theverge() {
           const formattedArr2 = Object.keys(res).map((title, i) => {
           return (
            <span key={i}>
-           
+             <a href={res[i].url} target="_blank" rel="noreferrer">
                <h1>{res[i].title}</h1>
-           
+             </a>
            </span>
            );
        })

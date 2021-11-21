@@ -14,8 +14,8 @@ function Loader(){
 
   return (
     <>
-       <img src="http://dwaynep-marshall.co.uk/littlecog.png" alt="Loading" className="spinner_small" />
-        <img src="http://dwaynep-marshall.co.uk/bigcog.png" alt="Loading" className="spinner_big" />
+       <img src="https://cdn-static.farfetch-contents.com/Content/UP/EXPERIENCE/Metaverse/littlecog.png" alt="Loading" className="spinner_small" />
+        <img src="https://cdn-static.farfetch-contents.com/Content/UP/EXPERIENCE/Metaverse/bigcog.png" alt="Loading" className="spinner_big" />
       </>
   )
 }

@@ -95,3 +95,35 @@ header h6 {
 
 }
 
+
+.spinner_big {
+  width: 50px;
+  height: 50px;
+  display: block;
+  -webkit-animation: rotation 2s infinite linear;
+  margin: 0px auto;
+}
+
+.spinner_small {
+  width: 32px;
+  height: 32px;
+  display: block;
+  -webkit-animation: rotation 2s infinite linear;
+  animation-direction: reverse;
+  margin: 0px auto;
+  right: -22px;
+  position: relative;
+  top: 10px;
+}
+
+@keyframes rotation {
+  from {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+
+  }
+  to {
+          -webkit-transform: rotate(359deg);
+          transform: rotate(360deg);
+  }
+}

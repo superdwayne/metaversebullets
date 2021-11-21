@@ -10,6 +10,17 @@ import './App.css';
 extend({ OrbitControls }); 
 
 
+function Loader(){
+
+  return (
+    <>
+       <img src="http://dwaynep-marshall.co.uk/littlecog.png" alt="Loading" className="spinner_small" />
+        <img src="http://dwaynep-marshall.co.uk/bigcog.png" alt="Loading" className="spinner_big" />
+      </>
+  )
+}
+
+
 const CameraControls = () => {
   const {
     camera,
@@ -63,16 +74,11 @@ function Tron(){
 
 function Articles()  {
   
-  const loading = useRef(false);
+  const [loading, setLoading] = useState(false);
   const [shapes, setShapes] = useState(null);
 
   useEffect(() => {
 
-    console.log(process.env.NODE_ENV)
-
-    loading.current = true;
-    
-    console.log("inital load" , loading)
 
     const params = {
       method: 'GET',
@@ -87,6 +93,8 @@ function Articles()  {
 
 
       Request(`/api`, params, (response) => {
+
+        setLoading(true)
         
         let shape = JSON.parse(JSON.stringify(response))
 
@@ -107,32 +115,30 @@ function Articles()  {
     })
 
       setShapes(formattedArr.slice(0,3));
-    
-    //  console.log(formattedArr, "after formatting")
-
-        loading.current = false;
-        console.log("End data" , loading  )
+       
     });
+
+    setLoading(false)
+    console.log("End data" , loading  )
 
  
 
   }, []);
 
   return (
+     loading ?  shapes : <Loader />  
     
-    shapes
   )
   
 }
 
 function Theverge() {
   
-  const loading = useRef(false);
+  const [loading, setLoading] = useState(false);
   const [theverge, setTheverge] = useState(null);
 
   useEffect(() => {
 
-    loading.current = true;
     console.log("inital load" , loading)
 
     const params = {
@@ -144,9 +150,10 @@ function Theverge() {
       },
     };
      
-    console.log("Component mounting..",  loading )
 
       Request(`/api/theverge`, params, (response) => {
+
+        setLoading(true)
 
         console.log(response, "before formatting") 
 
@@ -168,22 +175,27 @@ function Theverge() {
             
     })
 
+    setLoading(false)
+
   }, []);
 
+
+
   return (
-    theverge);
+    
+    loading ?  theverge : <Loader />  
+    );
   
 }
 
 
 function Xr() {
   
-  const loading = useRef(false);
+  const [loading, setLoading] = useState(false);
   const [thexr, setThexr] = useState(null);
 
   useEffect(() => {
 
-    loading.current = true;
     console.log("inital load" , loading)
 
     const params = {
@@ -197,6 +209,8 @@ function Xr() {
     console.log("Component mounting..",  loading )
 
       Request(`api/xrtoday`, params, (response) => {
+
+        setLoading(true)
 
 
         // console.log(response) 
@@ -216,13 +230,20 @@ function Xr() {
             
     })
 
+    setLoading(false)
+
   }, []);
 
-  return (thexr);
+  return (
+    
+    loading ?  thexr : <Loader />  
+    );
   
 }
 
 function App() {
+
+
   return (
     <div className="App">
    
@@ -238,7 +259,7 @@ function App() {
           
               <section>
               <h1>LATEST NEWS FROM BANKLESSHQ</h1>
-                <Articles />
+                  <Articles />
                 </section>
               <section className="ava" >
                 <img  src="https://renderapi.s3.amazonaws.com/xxo86RThN.png" alt="" />

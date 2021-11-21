@@ -6,16 +6,17 @@ const cheerio = require('cheerio');
 const mongoose = require("mongoose");
 const articlesSchema = require("./schema");
 const thevergeSchema = require("./thevergeschema");
+const xrarticlesSchema = require("./xrarticlesSchema");
 
 const dotenv = require('dotenv');
 dotenv.config();
 
 const PORT = process.env.PORT 
-const blankless = require("./banklesshq");
-const xrtoday = require("./xrtoday");
+
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
 const theverges = 'https://www.theverge.com/fortnite'
+const xrtoday = 'https://www.xrtoday.com/tag/metaverse/'
 
 
 app.get('/api', cors(), (req, res) => {
@@ -69,7 +70,7 @@ app.get('/api/theverge', async (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
     
-  await  axios(theverges).then(function(ressponse)
+  await axios(theverges).then(function(ressponse)
    {
        const html = ressponse.data
        const $ = cheerio.load(html)
@@ -83,14 +84,14 @@ app.get('/api/theverge', async (req, res) => {
         })
     })
 
-       console.log(thevergearticles)
+    //    console.log(thevergearticles)
       
-           const theverge = mongoose.model('Verge', thevergeSchema, 'theverge2');
+           const theverge = mongoose.model('XR', thevergeSchema, 'theverge2');
    
            theverge.find({}, function (err, users) {
                res.send(users);
 
-               console.log(users)
+            //    console.log(users)
 
               if (users.length >= 8) {
                   console.log('Too Many entries in the DB')
@@ -115,6 +116,55 @@ app.get('/api/theverge', async (req, res) => {
 
  });
 
+ app.get('/api/xrtoday', async (req, res) => {
+
+    res.setHeader('Content-Type', 'application/json');
+    
+  await axios(xrtoday).then(function(ressponse)
+   {
+       const html = ressponse.data
+       const $ = cheerio.load(html)
+       const xrarticles = []
+       $('.col-md-4', html).each((i , elm) => {
+        const title = $(elm).find('.font-weight-500').text()
+        // const artURL = $(elm).find('.single_uctv-inner').attr('href')
+        xrarticles.push({
+        title: title,
+        // url: artURL
+        })
+    })
+   
+console.log(xrarticles.url)
+      
+           const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr');
+   
+           Xr.find({}, function (err, users) {
+               res.send(users);
+
+            //    console.log(users)
+
+              if (users.length >= 8) {
+                  console.log('Too Many entries in the DB')
+              } else {
+                  // save model to database
+                  Xr.collection.insertMany(xrarticles, function (err, docs) {
+                      if (err) {
+                          return console.error(err);
+                      } else {
+                          // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+                          console.log(docs.insertedCount, "Enrties have been added to the database");
+   
+                      }
+                  });
+              }
+              });
+       
+   
+   }).catch(err => console.log(err))
+   
+
+
+ });
 
 app.use(cors())
 

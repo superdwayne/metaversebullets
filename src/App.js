@@ -176,50 +176,51 @@ function Theverge() {
 }
 
 
-// function Xr() {
+function Xr() {
   
-//   const loading = useRef(false);
-//   const [thexr, setThexr] = useState(null);
+  const loading = useRef(false);
+  const [thexr, setThexr] = useState(null);
 
-//   useEffect(() => {
+  useEffect(() => {
 
-//     loading.current = true;
-//     console.log("inital load" , loading)
+    loading.current = true;
+    console.log("inital load" , loading)
 
-//     const params = {
-//       method: 'GET',
-//       body: JSON.stringify(),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     };
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
     
-//     console.log("Component mounting..",  loading )
+    console.log("Component mounting..",  loading )
 
-//       Request(`http://localhost:5000/api/xrtoday`, params, (response) => {
+      Request(`api/xrtoday`, params, (response) => {
 
 
-//         // console.log(response) 
+        // console.log(response) 
 
-//           const formattedArr = Object.keys(response).map((title, i) => {
-//           return (
-//            <span key={i}>
-//              <a href={response[i].url} target="_blank" rel="noreferrer">
-//                <h1>{response[i].title}</h1>
-//              </a>
-//            </span>
-//            );
-//        })
+          const formattedArr = Object.keys(response).map((title, i) => {
+          return (
+           <span key={i}>
+             {/* <a href={response[i].url} target="_blank" rel="noreferrer">
+               <h1>{response[i].title}</h1>
+             </a> */}
+             <h1>{response[i].title}</h1>
+           </span>
+           );
+       })
               
-//        setThexr(formattedArr.slice(0,3))
+       setThexr(formattedArr.slice(0,3))
             
-//     })
+    })
 
-//   }, []);
+  }, []);
 
-//   return (thexr);
+  return (thexr);
   
-// }
+}
 
 function App() {
   return (
@@ -258,7 +259,7 @@ function App() {
                  </section>
 
                </section>
-          {/* 
+          
 
 
                 <section className="scrapped">
@@ -272,7 +273,7 @@ function App() {
                     <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
                   </section>
 
-                </section> */}
+                </section>
 
 
     </div>

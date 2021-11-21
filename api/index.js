@@ -125,18 +125,18 @@ app.get('/api/theverge', async (req, res) => {
        const html = ressponse.data
        const $ = cheerio.load(html)
        const xrarticles = []
-       $('.col-md-4', html).each((i , elm) => {
+       $('.ccol-md-4 mb-50', html).each((i , elm) => {
         const title = $(elm).find('.font-weight-500').text()
-        // const artURL = $(elm).find('.single_uctv-inner').attr('href')
+        const artURL = $(elm).find('.single_uctv-inner position-relative mb-2').attr('href')
         xrarticles.push({
         title: title,
-        // url: artURL
+        url: artURL
         })
     })
    
 console.log(xrarticles.url)
       
-           const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr');
+           const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr1');
    
            Xr.find({}, function (err, users) {
                res.send(users);

@@ -122,7 +122,7 @@ function Articles()  {
     console.log("End data" , loading  )
 
  
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -232,6 +232,7 @@ function Xr() {
 
     setLoading(false)
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

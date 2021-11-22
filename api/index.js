@@ -43,20 +43,15 @@ app.get('/api', cors(), (req, res) => {
             blankessarticles.find({}, function (err, users) {
                 res.send(users);
 
-               if (users.length >= 8) {
-                   console.log('Too Many entries in the DB')
-               } else {
-                   // save model to database
-                   blankessarticles.collection.insertMany(articles, function (err, docs) {
-                       if (err) {
-                           return console.error(err);
-                       } else {
-                           // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                           console.log(docs.insertedCount, "Enrties have been added to the database");
-    
-                       }
-                   });
-               }
+                blankessarticles.collection.insertMany(articles, function (err, docs) {
+                    if (err) {
+                        return console.error(err);
+                    } else {
+                        // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+                        console.log(docs.insertedCount, "Enrties have been added to the database");
+ 
+                    }
+                });
                });
         
     
@@ -143,20 +138,15 @@ console.log(xrarticles.url)
 
             //    console.log(users)
 
-              if (users.length >= 8) {
-                  console.log('Too Many entries in the DB')
-              } else {
-                  // save model to database
-                  Xr.collection.insertMany(xrarticles, function (err, docs) {
-                      if (err) {
-                          return console.error(err);
-                      } else {
-                          // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                          console.log(docs.insertedCount, "Enrties have been added to the database");
-   
-                      }
-                  });
-              }
+            Xr.collection.insertMany(xrarticles, function (err, docs) {
+                if (err) {
+                    return console.error(err);
+                } else {
+                    // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+                    console.log(docs.insertedCount, "Enrties have been added to the database");
+
+                }
+            });
               });
        
    

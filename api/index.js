@@ -38,7 +38,7 @@ app.get('/api', cors(), (req, res) => {
         })
        
             // compile schema to model
-            const blankessarticles = mongoose.model('Book', articlesSchema, 'Beta929');
+            const blankessarticles = mongoose.model('Book', articlesSchema, 'banklesshq');
     
             blankessarticles.find({}, function (err, users) {
                 res.send(users);

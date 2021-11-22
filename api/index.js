@@ -38,7 +38,7 @@ app.get('/api', cors(), (req, res) => {
         })
        
             // compile schema to model
-            const blankessarticles = mongoose.model('Book', articlesSchema, 'banklesshq');
+            const blankessarticles = mongoose.model('Book', articlesSchema, 'banklesshq1');
     
             blankessarticles.find({}, function (err, users) {
                 res.send(users);
@@ -131,7 +131,7 @@ app.get('/api/theverge', async (req, res) => {
    
 console.log(xrarticles.url)
       
-           const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr1');
+           const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr22');
    
            Xr.find({}, function (err, users) {
                res.send(users);

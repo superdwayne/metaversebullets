@@ -110,30 +110,46 @@ app.get('/api/theverge', async (req, res) => {
         url: artURL
         })
     })
-
-    //    console.log(thevergearticles)
       
            const theverge = mongoose.model('XR', thevergeSchema, 'theverge2');
-   
+
+           theverge.count(function(err, count) {
+            
+            if( count === 0 || null) {
+                console.log("No Found Records For Blankess");                    
+                
+            } else {
+
+                theverge.deleteMany( {thevergearticles} ,
+       
+                    function(err, result){
+        
+                        if(err){
+                           console.log('error')
+                        }
+                        else{
+                            console.log("success" , count , "items deleted for the Verge  ")
+                        }
+                
+                    }) 
+               
+            }
+        });
+
+
            theverge.find({}, function (err, users) {
-               res.send(users);
-
-            //    console.log(users)
-
-              if (users.length >= 8) {
-                 // console.log('Too Many entries in the DB')
-              } else {
-                  // save model to database
+    
                   theverge.collection.insertMany(thevergearticles, function (err, docs) {
                       if (err) {
                           return console.error(err);
                       } else {
                           // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
                           console.log(docs.insertedCount, "Enrties have been added to the database");
+                          res.send(users);
    
                       }
                   });
-              }
+              
               });
        
    
@@ -209,25 +225,44 @@ app.get('/api/theverge', async (req, res) => {
         })
     })
 
-    // console.log(beastarticles)
-
-    // res.send(beastarticles);
          
            const beast = mongoose.model('Beast', hypebeastschema, 'Hypebeast3');
+
+
+           beast.count(function(err, count) {
+            
+            if( count === 0 || null) {
+                console.log("No Found Records For Blankess");                    
+                
+            } else {
+
+                beast.deleteMany( {beastarticles} ,
+       
+                    function(err, result){
+        
+                        if(err){
+                           console.log('error')
+                        }
+                        else{
+                            console.log("success" , count , "items deleted for Hypebeast  ")
+                        }
+                
+                    }) 
+               
+            }
+        });
+
+
    
            beast.find({}, function (err, users) {
-
-           res.send(users)
-               
-
-           // console.log("Hype beast", users.length)
 
             beast.collection.insertMany(beastarticles, function (err, docs) {
                 if (err) {
                     return console.error(err);
                 } else {
-                    // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                  //  console.log(docs.insertedCount, "Enrties have been added to the database for Hype Beast");
+              
+                   console.log(docs.insertedCount, "Enrties have been added to the database for Hype Beast");
+                   res.send(users)
 
                 }
             });

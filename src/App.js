@@ -201,58 +201,58 @@ function Theverge() {
   
 }
 
-function Xr() {
+// function Xr() {
   
-  const [loading, setLoading] = useState(false);
-  const [thexr, setThexr] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [thexr, setThexr] = useState(null);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    console.log("inital load" , loading)
+//     console.log("inital load" , loading)
 
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     };
     
-    console.log("Component mounting..",  loading )
+//     console.log("Component mounting..",  loading )
 
-      Request(`api/xrtoday`, params, (response) => {
+//       Request(`api/xrtoday`, params, (response) => {
 
-        setLoading(true)
+//         setLoading(true)
 
 
-        // console.log(response) 
+//         // console.log(response) 
 
-          const formattedArr = Object.keys(response).map((title, i) => {
-          return (
-           <span key={i}>
-             {/* <a href={response[i].url} target="_blank" rel="noreferrer">
-               <h1>{response[i].title}</h1>
-             </a> */}
-             <h1>{response[i].title}</h1>
-           </span>
-           );
-       })
+//           const formattedArr = Object.keys(response).map((title, i) => {
+//           return (
+//            <span key={i}>
+//              {/* <a href={response[i].url} target="_blank" rel="noreferrer">
+//                <h1>{response[i].title}</h1>
+//              </a> */}
+//              <h1>{response[i].title}</h1>
+//            </span>
+//            );
+//        })
               
-       setThexr(formattedArr.slice(0,3))
+//        setThexr(formattedArr.slice(0,3))
             
-    })
+//     })
 
-    setLoading(false)
+//     setLoading(false)
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
-  return (
+//   return (
     
-    loading ?  thexr : <Loader />  
-    );
+//     loading ?  thexr : <Loader />  
+//     );
   
-}
+// }
 
 function Hypebeast() {
   

@@ -157,12 +157,19 @@ function Theverge() {
      
 
       Request(`/api/theverge`, params, (response) => {
+        
 
         setLoading(true)
 
         console.log(response, "before formatting") 
 
         let res = response
+
+        if (res.length === 0) {
+          console.log('No articles')
+          window.location.reload(); 
+ 
+        }
 
         console.log(res, "after formatting") 
 
@@ -381,6 +388,12 @@ function Hypebeast() {
 
         let res = response
 
+        if (res.length === 0) {
+          console.log('No articles')
+          window.location.reload(); 
+ 
+        }
+
         console.log(res, "after formatting") 
 
           const formattedArr2 = Object.keys(res).map((title, i) => {
@@ -455,7 +468,7 @@ function App() {
                </section>
           
 
-{
+
                 <section className="scrapped">
 
                 <section>
@@ -467,7 +480,7 @@ function App() {
                     <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
                   </section>
 
-                </section> }
+                </section> 
 
 
     </div>

@@ -17,13 +17,13 @@ const PORT = process.env.PORT
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
 const theverges = 'https://www.theverge.com/fortnite'
-const xrtoday = 'https://www.xrtoday.com/tag/metaverse/'
+// const xrtoday = 'https://www.xrtoday.com/'
 const hypebeast = 'https://hypebeast.com/latest'
 
 
-app.get('/api', cors(), (req, res) => {
+app.get('/api', cors(), async (req, res) => {
     
-     axios(banklesshq).then(function(ressponse)
+    await axios(banklesshq).then(function(ressponse)
     {
         const html = ressponse.data
         const $ = cheerio.load(html)
@@ -45,8 +45,9 @@ app.get('/api', cors(), (req, res) => {
 
 
             blankessarticles.count(function(err, count) {
+
             
-                if( count === 0 || null) {
+                if( count === 0 || err) {
                     console.log("No Found Records For Blankess");                    
                     
                 } else {
@@ -77,7 +78,7 @@ app.get('/api', cors(), (req, res) => {
                         return console.error(err);
                     } else {
                         // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                        console.log(docs.insertedCount, "Enrties have been added to the database");
+                        console.log(docs.insertedCount, "Enrties have been added to the for Blankess");
                         res.send(users);
  
                     }
@@ -144,7 +145,7 @@ app.get('/api/theverge', async (req, res) => {
                           return console.error(err);
                       } else {
                           // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                          console.log(docs.insertedCount, "Enrties have been added to the database");
+                          console.log(docs.insertedCount, "Enrties have been added to the for the verge");
                           res.send(users);
    
                       }
@@ -159,54 +160,55 @@ app.get('/api/theverge', async (req, res) => {
 
  });
 
- app.get('/api/xrtoday', async (req, res) => {
+//  app.get('/api/xrtoday', async (req, res) => {
 
-    res.setHeader('Content-Type', 'application/json');
+//     res.setHeader('Content-Type', 'application/json');
     
-  await axios(xrtoday).then(function(ressponse)
-   {
-       const html = ressponse.data
-       const $ = cheerio.load(html)
-       const xrarticles = []
-       $('.ccol-md-4 mb-50', html).each((i , elm) => {
-        const title = $(elm).find('.font-weight-500').text()
-        const artURL = $(elm).find('.single_uctv-inner position-relative mb-2').attr('href')
-        xrarticles.push({
-        title: title,
-        url: artURL
-        })
-    })
+//   await axios(xrtoday).then(function(ressponse)
+//    {
+//        const html = ressponse.data
+//        const $ = cheerio.load(html)
+//        console.log(html)
+//        const xrarticles = []
+//        $('.ccol-md-4 mb-50', html).each((i , elm) => {
+//         const title = $(elm).find('.font-weight-500').text()
+//         const artURL = $(elm).find('.single_uctv-inner position-relative mb-2').attr('href')
+//         xrarticles.push({
+//         title: title,
+//         url: artURL
+//         })
+//     })
    
-//console.log(xrarticles.url)
+// //console.log(xrarticles.url)
       
-           const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr22');
+//            const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr22');
    
-           Xr.find({}, function (err, users) {
-               res.send(users);
+//            Xr.find({}, function (err, users) {
+//                res.send(users);
 
-            //    console.log(users)
+//             //    console.log(users)
 
-            Xr.collection.insertMany(xrarticles, function (err, docs) {
-                if (err) {
-                    return console.error(err);
-                } else {
-                    // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                    console.log(docs.insertedCount, "Enrties have been added to the database");
+//             Xr.collection.insertMany(xrarticles, function (err, docs) {
+//                 if (err) {
+//                     return console.error(err);
+//                 } else {
+//                     // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+//                     console.log(docs.insertedCount, "Enrties have been added to the database");
 
-                }
-            });
-              });
+//                 }
+//             });
+//               });
        
    
-   }).catch(err => console.log(err))
+//    }).catch(err => console.log(err))
    
 
 
- });
+//  });
 
  app.get('/api/hypebeast', async (req, res) => {
 
-    res.setHeader('Content-Type', 'application/json');
+ res.setHeader('Content-Type', 'application/json');
     
   await axios(hypebeast).then(function(ressponse)
    {

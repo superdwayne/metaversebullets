@@ -201,63 +201,10 @@ function Theverge() {
   
 }
 
-// function Xr() {
-  
-//   const [loading, setLoading] = useState(false);
-//   const [thexr, setThexr] = useState(null);
-
-//   useEffect(() => {
-
-//     console.log("inital load" , loading)
-
-//     const params = {
-//       method: 'GET',
-//       body: JSON.stringify(),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     };
-    
-//     console.log("Component mounting..",  loading )
-
-//       Request(`api/xrtoday`, params, (response) => {
-
-//         setLoading(true)
-
-
-//         // console.log(response) 
-
-//           const formattedArr = Object.keys(response).map((title, i) => {
-//           return (
-//            <span key={i}>
-//              {/* <a href={response[i].url} target="_blank" rel="noreferrer">
-//                <h1>{response[i].title}</h1>
-//              </a> */}
-//              <h1>{response[i].title}</h1>
-//            </span>
-//            );
-//        })
-              
-//        setThexr(formattedArr.slice(0,3))
-            
-//     })
-
-//     setLoading(false)
-
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-
-//   return (
-    
-//     loading ?  thexr : <Loader />  
-//     );
-  
-// }
-
-function Hypebeast() {
+function Xr() {
   
   const [loading, setLoading] = useState(false);
-  const [beast, setThebeast] = useState(null);
+  const [thexr, setThexr] = useState(null);
 
   useEffect(() => {
 
@@ -268,54 +215,106 @@ function Hypebeast() {
       body: JSON.stringify(),
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
       },
     };
-     
+    
+    console.log("Component mounting..",  loading )
 
-      Request(`/api/hypebeast`, params, (response) => {
+      Request(`api/arpost`, params, (response) => {
 
         setLoading(true)
 
-        console.log(response, "before formatting") 
 
-        let res = response
+        console.log(response) 
 
-        if (res.length === 0) {
-          console.log('No articles')
-          window.location.reload(); 
- 
-        }
-
-        console.log(res, "after formatting") 
-
-          const formattedArr2 = Object.keys(res).map((title, i) => {
+          const formattedArr = Object.keys(response).map((title, i) => {
           return (
            <span key={i}>
-             <a href={res[i].url} target="_blank" rel="noreferrer">
-               <h1>{res[i].title}</h1>
-               <h4>{res[i].preview}</h4>
+             <a href={response[i].url} target="_blank" rel="noreferrer">
+               <h1>{response[i].title}</h1>
              </a>
            </span>
            );
        })
               
-       setThebeast(formattedArr2.slice(0,2))
+       setThexr(formattedArr.slice(0,3))
             
     })
 
     setLoading(false)
-    
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     
-    loading ?  beast : <Loader />  
+    loading ?  thexr : <Loader />  
     );
   
 }
+
+// function Hypebeast() {
+  
+//   const [loading, setLoading] = useState(false);
+//   const [beast, setThebeast] = useState(null);
+
+//   useEffect(() => {
+
+//     console.log("inital load" , loading)
+
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json',
+//       },
+//     };
+     
+
+//       Request(`/api/hypebeast`, params, (response) => {
+
+//         setLoading(true)
+
+//         console.log(response, "before formatting") 
+
+//         let res = response
+
+//         if (res.length === 0) {
+//           console.log('No articles')
+//           window.location.reload(); 
+ 
+//         }
+
+//         console.log(res, "after formatting") 
+
+//           const formattedArr2 = Object.keys(res).map((title, i) => {
+//           return (
+//            <span key={i}>
+//              <a href={res[i].url} target="_blank" rel="noreferrer">
+//                <h1>{res[i].title}</h1>
+//                <h4>{res[i].preview}</h4>
+//              </a>
+//            </span>
+//            );
+//        })
+              
+//        setThebeast(formattedArr2.slice(0,2))
+            
+//     })
+
+//     setLoading(false)
+    
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
+
+
+//   return (
+    
+//     loading ?  beast : <Loader />  
+//     );
+  
+// }
 
 function App() {
 
@@ -361,7 +360,7 @@ function App() {
           
 
 
-                <section className="scrapped">
+                {/* <section className="scrapped">
 
                 <section>
                     <h1>LATEST NEWS FROM HYPEBEAST</h1>
@@ -372,8 +371,26 @@ function App() {
                     <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
                   </section>
 
-                </section> 
+                </section>  */}
 
+
+                <section className="scrapped">
+
+                <section>
+                 <h1>LATEST NEWS FROM THE ARPOST</h1>
+                 <Xr />
+                 </section>
+                 
+                 <section className="ava">
+                   <img src="https://renderapi.s3.amazonaws.com/YgXYoXVqp.png" alt="" />
+                 </section>
+                 
+              
+
+               </section>
+          
+
+  
                
     </div>
 

@@ -17,8 +17,8 @@ const PORT = process.env.PORT
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
 const theverges = 'https://www.theverge.com/fortnite'
-// const xrtoday = 'https://www.xrtoday.com/'
-const hypebeast = 'https://hypebeast.com/latest'
+const arpost = 'https://arpost.co/'
+// const hypebeast = 'https://hypebeast.com/latest'
 
 
 app.get('/api', cors(), async (req, res) => {
@@ -160,40 +160,111 @@ app.get('/api/theverge', async (req, res) => {
 
  });
 
-//  app.get('/api/xrtoday', async (req, res) => {
+ app.get('/api/arpost', async (req, res) => {
 
-//     res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'application/json');
     
-//   await axios(xrtoday).then(function(ressponse)
+  await axios(arpost).then(function(ressponse)
+   {
+       const html = ressponse.data
+       const $ = cheerio.load(html)
+    //    console.log(html)
+       const xrarticles = []
+       $('.ruby-block-inner', html).each((i , elm) => {
+        const title = $(elm).find('.post-title-link').text().substring(0, 71)
+        const artURL = $(elm).find('.post-title-link').attr('href')
+        xrarticles.push({
+        title: title,
+        url: artURL
+        })
+    })
+   
+res.send(xrarticles)
+      
+        //    const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr22');
+   
+        //    Xr.find({}, function (err, users) {
+        //        res.send(users);
+
+        //     //    console.log(users)
+
+        //     Xr.collection.insertMany(xrarticles, function (err, docs) {
+        //         if (err) {
+        //             return console.error(err);
+        //         } else {
+        //             // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+        //             console.log(docs.insertedCount, "Enrties have been added to the database");
+
+        //         }
+        //     });
+        //       });
+       
+   
+   }).catch(err => console.log(err))
+   
+
+
+ });
+
+//  app.get('/api/hypebeast', async (req, res) => {
+
+//  res.setHeader('Content-Type', 'application/json');
+    
+//   await axios(hypebeast).then(function(ressponse)
 //    {
 //        const html = ressponse.data
 //        const $ = cheerio.load(html)
-//        console.log(html)
-//        const xrarticles = []
-//        $('.ccol-md-4 mb-50', html).each((i , elm) => {
-//         const title = $(elm).find('.font-weight-500').text()
-//         const artURL = $(elm).find('.single_uctv-inner position-relative mb-2').attr('href')
-//         xrarticles.push({
+//        const beastarticles = []
+//     //    console.log(html)
+//        $('.post-box', html).each((i , elm) => {
+//         const title = $(elm).find('.post-box-content-title').text()
+//         const artURL = $(elm).find('.title').attr('href')
+//         const preview = $(elm).find('.post-box-content-excerpt').text()
+//         beastarticles.push({
 //         title: title,
+//         preview: preview,
 //         url: artURL
 //         })
 //     })
-   
-// //console.log(xrarticles.url)
-      
-//            const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr22');
-   
-//            Xr.find({}, function (err, users) {
-//                res.send(users);
 
-//             //    console.log(users)
+         
+//            const beast = mongoose.model('Beast', hypebeastschema, 'Hypebeast3');
 
-//             Xr.collection.insertMany(xrarticles, function (err, docs) {
+
+//            beast.count(function(err, count) {
+            
+//             if( count === 0 || null) {
+//                 console.log("No Found Records For Blankess");                    
+                
+//             } else {
+
+//                 beast.deleteMany( {beastarticles} ,
+       
+//                     function(err, result){
+        
+//                         if(err){
+//                            console.log('error')
+//                         }
+//                         else{
+//                             console.log("success" , count , "items deleted for Hypebeast  ")
+//                         }
+                
+//                     }) 
+               
+//             }
+//         });
+
+
+   
+//            beast.find({}, function (err, users) {
+
+//             beast.collection.insertMany(beastarticles, function (err, docs) {
 //                 if (err) {
 //                     return console.error(err);
 //                 } else {
-//                     // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-//                     console.log(docs.insertedCount, "Enrties have been added to the database");
+              
+//                    console.log(docs.insertedCount, "Enrties have been added to the database for Hype Beast");
+//                    res.send(users)
 
 //                 }
 //             });
@@ -205,77 +276,6 @@ app.get('/api/theverge', async (req, res) => {
 
 
 //  });
-
- app.get('/api/hypebeast', async (req, res) => {
-
- res.setHeader('Content-Type', 'application/json');
-    
-  await axios(hypebeast).then(function(ressponse)
-   {
-       const html = ressponse.data
-       const $ = cheerio.load(html)
-       const beastarticles = []
-    //    console.log(html)
-       $('.post-box', html).each((i , elm) => {
-        const title = $(elm).find('.post-box-content-title').text()
-        const artURL = $(elm).find('.title').attr('href')
-        const preview = $(elm).find('.post-box-content-excerpt').text()
-        beastarticles.push({
-        title: title,
-        preview: preview,
-        url: artURL
-        })
-    })
-
-         
-           const beast = mongoose.model('Beast', hypebeastschema, 'Hypebeast3');
-
-
-           beast.count(function(err, count) {
-            
-            if( count === 0 || null) {
-                console.log("No Found Records For Blankess");                    
-                
-            } else {
-
-                beast.deleteMany( {beastarticles} ,
-       
-                    function(err, result){
-        
-                        if(err){
-                           console.log('error')
-                        }
-                        else{
-                            console.log("success" , count , "items deleted for Hypebeast  ")
-                        }
-                
-                    }) 
-               
-            }
-        });
-
-
-   
-           beast.find({}, function (err, users) {
-
-            beast.collection.insertMany(beastarticles, function (err, docs) {
-                if (err) {
-                    return console.error(err);
-                } else {
-              
-                   console.log(docs.insertedCount, "Enrties have been added to the database for Hype Beast");
-                   res.send(users)
-
-                }
-            });
-              });
-       
-   
-   }).catch(err => console.log(err))
-   
-
-
- });
 
 app.use(cors())
 

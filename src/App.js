@@ -104,10 +104,6 @@ function Articles()  {
          window.location.reload(); 
 
        }
-      // setShapes(Object.keys(shape));
-     // console.log(shape[0].atricleurl, "before formatting")
-
-
       const formattedArr = Object.keys(shape).map((title, i) => {
         return (
         <span key={i}>

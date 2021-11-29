@@ -237,7 +237,7 @@ function Xr() {
            );
        })
               
-       setThexr(formattedArr.slice(0,3))
+       setThexr(formattedArr.slice(0,4))
             
     })
 

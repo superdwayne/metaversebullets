@@ -119,7 +119,7 @@ function Articles()  {
         );
     })
 
-      setShapes(formattedArr.slice(0,3));
+      setShapes(formattedArr.slice(0,4));
 
        
     });

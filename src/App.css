@@ -36,7 +36,7 @@ span {
   position: relative;
   color: black;
   width: 800px;
-  top: -1440px;
+  top: -1800px;
   background-color: white;
   margin: 0px auto;
   height: 50vh;
@@ -44,7 +44,7 @@ span {
   flex-direction: row;
   justify-content: center;
   align-items: auto;
-  align-content: start;
+  align-content: flex-start;
   outline: 9px solid #000;
   outline-offset: -16px;
 }
@@ -65,7 +65,7 @@ header {
   position: relative;
   color: black;
   width: 800px;
-  top: -1440px;
+  top: -1800px;
   background-color: white;
   margin: 10px auto;
   outline-offset: -16px;

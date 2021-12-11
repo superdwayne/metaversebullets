@@ -1,13 +1,18 @@
 import React, {  useRef , Suspense,  useState, useEffect} from 'react'
-import { Canvas,
-  useFrame,
-  extend,
-  useThree, } from '@react-three/fiber'
-  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { Canvas, useFrame, extend, useThree, } from '@react-three/fiber'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Request from "./requests";
 import './App.css';
+import ReactGA from 'react-ga';
 
 extend({ OrbitControls }); 
+
+
+const initGA = () => { 
+ ReactGA.initialize('UA-102019824-2') 
+ ReactGA.pageview(window.location.pathname + window.location.search);
+} 
+
 
 
 function Loader(){
@@ -61,8 +66,8 @@ function Box() {
 
 function Tron(){
   return(
-    <Canvas style={{ backgroundColor: "#000000" , height: "200vh", width: "100vw" }}>
-     <Suspense fallback={'Loading'}>
+    <Canvas style={{ backgroundColor: "#000000" , height: "250vh", width: "100vw" }}>
+     <Suspense fallback={'Initializing'}>
      <CameraControls />
      {/* <Shapetest/> */}
         <Box/>
@@ -249,71 +254,72 @@ function Xr() {
   
 }
 
-// function Hypebeast() {
+function Hypebeast() {
   
-//   const [loading, setLoading] = useState(false);
-//   const [beast, setThebeast] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [beast, setThebeast] = useState(null);
 
-//   useEffect(() => {
+  useEffect(() => {
 
-//     console.log("inital load" , loading)
+    console.log("inital load" , loading)
 
-//     const params = {
-//       method: 'GET',
-//       body: JSON.stringify(),
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Accept': 'application/json',
-//       },
-//     };
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    };
      
 
-//       Request(`/api/hypebeast`, params, (response) => {
+      Request(`/api/hypebeast`, params, (response) => {
 
-//         setLoading(true)
+        setLoading(true)
 
-//         console.log(response, "before formatting") 
+        console.log(response, "before formatting") 
 
-//         let res = response
+        let res = response
 
-//         if (res.length === 0) {
-//           console.log('No articles')
-//           window.location.reload(); 
+        if (res.length === 0) {
+          console.log('No articles')
+          window.location.reload(); 
  
-//         }
+        }
 
-//         console.log(res, "after formatting") 
+        console.log(res, "after formatting") 
 
-//           const formattedArr2 = Object.keys(res).map((title, i) => {
-//           return (
-//            <span key={i}>
-//              <a href={res[i].url} target="_blank" rel="noreferrer">
-//                <h1>{res[i].title}</h1>
-//                <h4>{res[i].preview}</h4>
-//              </a>
-//            </span>
-//            );
-//        })
+          const formattedArr2 = Object.keys(res).map((title, i) => {
+          return (
+           <span key={i}>
+             <a href={res[i].url} target="_blank" rel="noreferrer">
+               <h1>{res[i].title}</h1>
+               <h4>{res[i].preview}</h4>
+             </a>
+           </span>
+           );
+       })
               
-//        setThebeast(formattedArr2.slice(0,2))
+       setThebeast(formattedArr2.slice(0,4))
             
-//     })
+    })
 
-//     setLoading(false)
+    setLoading(false)
     
-// // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
-//   return (
+  return (
     
-//     loading ?  beast : <Loader />  
-//     );
+    loading ?  beast : <Loader />  
+    );
   
-// }
+}
 
 function App() {
 
+  useEffect(() => { initGA(); }, []);
 
   return (
     <div className="App">
@@ -323,7 +329,7 @@ function App() {
    
       <header>
             <h1>METAVERSE BITES</h1>
-            <h6>VERSION 3.0</h6>
+            <h6>VERSION 3.0.1</h6>
         </header>
 
       
@@ -356,7 +362,7 @@ function App() {
           
 
 
-                {/* <section className="scrapped">
+                <section className="scrapped">
 
                 <section>
                     <h1>LATEST NEWS FROM HYPEBEAST</h1>
@@ -364,24 +370,24 @@ function App() {
                   </section>
                  
                   <section className="ava">
-                    <img src="https://renderapi.s3.amazonaws.com/NPOS2i2y9.png" alt="" />
+                    <img src="https://renderapi.s3.amazonaws.com/fVHpQzUMz.png" alt="" />
                   </section>
 
-                </section>  */}
+                </section> 
 
 
                 <section className="scrapped">
 
-                <section>
-                 <h1>LATEST NEWS FROM THE ARPOST</h1>
-                 <Xr />
-                 </section>
+          
                  
                  <section className="ava">
                    <img src="https://renderapi.s3.amazonaws.com/YgXYoXVqp.png" alt="" />
                  </section>
                  
-              
+                 <section>
+                 <h1>LATEST NEWS FROM THE ARPOST</h1>
+                 <Xr />
+                 </section>
 
                </section>
           

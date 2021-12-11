@@ -18,7 +18,7 @@ const PORT = process.env.PORT
 const banklesshq = 'https://metaversal.banklesshq.com/'
 const theverges = 'https://www.theverge.com/fortnite'
 const arpost = 'https://arpost.co/'
-// const hypebeast = 'https://hypebeast.com/latest'
+const hypebeast = 'https://hypebeast.com/art'
 
 
 app.get('/api', cors(), async (req, res) => {
@@ -206,76 +206,76 @@ res.send(xrarticles)
 
  });
 
-//  app.get('/api/hypebeast', async (req, res) => {
+ app.get('/api/hypebeast', async (req, res) => {
 
-//  res.setHeader('Content-Type', 'application/json');
+ res.setHeader('Content-Type', 'application/json');
     
-//   await axios(hypebeast).then(function(ressponse)
-//    {
-//        const html = ressponse.data
-//        const $ = cheerio.load(html)
-//        const beastarticles = []
-//     //    console.log(html)
-//        $('.post-box', html).each((i , elm) => {
-//         const title = $(elm).find('.post-box-content-title').text()
-//         const artURL = $(elm).find('.title').attr('href')
-//         const preview = $(elm).find('.post-box-content-excerpt').text()
-//         beastarticles.push({
-//         title: title,
-//         preview: preview,
-//         url: artURL
-//         })
-//     })
+  await axios(hypebeast).then(function(ressponse)
+   {
+       const html = ressponse.data
+       const $ = cheerio.load(html)
+       const beastarticles = []
+    //    console.log(html)
+       $('.post-box', html).each((i , elm) => {
+        const title = $(elm).find('.post-box-content-title').text()
+        const artURL = $(elm).find('.title').attr('href')
+        const preview = $(elm).find('.post-box-content-excerpt').text()
+        beastarticles.push({
+        title: title,
+        preview: preview,
+        url: artURL
+        })
+    })
 
          
-//            const beast = mongoose.model('Beast', hypebeastschema, 'Hypebeast3');
+           const beast = mongoose.model('Beast', hypebeastschema, 'Hypebeast3');
 
 
-//            beast.count(function(err, count) {
+           beast.count(function(err, count) {
             
-//             if( count === 0 || null) {
-//                 console.log("No Found Records For Blankess");                    
+            if( count === 0 || null) {
+                console.log("No Found Records For Blankess");                    
                 
-//             } else {
+            } else {
 
-//                 beast.deleteMany( {beastarticles} ,
+                beast.deleteMany( {beastarticles} ,
        
-//                     function(err, result){
+                    function(err, result){
         
-//                         if(err){
-//                            console.log('error')
-//                         }
-//                         else{
-//                             console.log("success" , count , "items deleted for Hypebeast  ")
-//                         }
+                        if(err){
+                           console.log('error')
+                        }
+                        else{
+                            console.log("success" , count , "items deleted for Hypebeast  ")
+                        }
                 
-//                     }) 
+                    }) 
                
-//             }
-//         });
+            }
+        });
 
 
    
-//            beast.find({}, function (err, users) {
+           beast.find({}, function (err, users) {
 
-//             beast.collection.insertMany(beastarticles, function (err, docs) {
-//                 if (err) {
-//                     return console.error(err);
-//                 } else {
+            beast.collection.insertMany(beastarticles, function (err, docs) {
+                if (err) {
+                    return console.error(err);
+                } else {
               
-//                    console.log(docs.insertedCount, "Enrties have been added to the database for Hype Beast");
-//                    res.send(users)
+                   console.log(docs.insertedCount, "Enrties have been added to the database for Hype Beast");
+                   res.send(users)
 
-//                 }
-//             });
-//               });
+                }
+            });
+              });
        
    
-//    }).catch(err => console.log(err))
+   }).catch(err => console.log(err))
    
 
 
-//  });
+ });
 
 app.use(cors())
 

@@ -77,6 +77,67 @@ function Tron(){
   )
 }
 
+function Decentraland()  {
+  
+  const [loading, setLoading] = useState(false);
+  const [shapes, setShapes] = useState(null);
+
+  useEffect(() => {
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+        
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+
+      Request(`/decentraland`, params, (response) => {
+
+        setLoading(true)
+        
+        let shape = JSON.parse(JSON.stringify(response))
+
+       console.log(shape , "loading"  )
+       
+       if (shape.length === 0) {
+         console.log('No articles')
+         window.location.reload(); 
+
+       }
+      const formattedArr = Object.keys(shape).map((title, i) => {
+        return (
+        <span key={i}>
+          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
+            <h1>{shape[i].title}</h1>
+            <h4>{shape[i].preview}</h4>
+          </a>
+        </span>
+        );
+    })
+
+      setShapes(formattedArr.slice(0,3));
+
+       
+    });
+
+    setLoading(false)
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+  return (
+     loading ? shapes : <Loader /> 
+     
+  )
+  
+}
+
 function Articles()  {
   
   const [loading, setLoading] = useState(false);
@@ -254,68 +315,68 @@ function Xr() {
   
 }
 
-function Hypebeast() {
+// function Hypebeast() {
   
-  const [loading, setLoading] = useState(false);
-  const [beast, setThebeast] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [beast, setThebeast] = useState(null);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    console.log("inital load" , loading)
+//     console.log("inital load" , loading)
 
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    };
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json',
+//       },
+//     };
      
 
-      Request(`/api/hypebeast`, params, (response) => {
+//       Request(`/api/hypebeast`, params, (response) => {
 
-        setLoading(true)
+//         setLoading(true)
 
-        console.log(response, "before formatting") 
+//         console.log(response, "before formatting") 
 
-        let res = response
+//         let res = response
 
-        if (res.length === 0) {
-          console.log('No articles')
-          window.location.reload(); 
+//         if (res.length === 0) {
+//           console.log('No articles')
+//           window.location.reload(); 
  
-        }
+//         }
 
-        console.log(res, "after formatting") 
+//         console.log(res, "after formatting") 
 
-          const formattedArr2 = Object.keys(res).map((title, i) => {
-          return (
-           <span key={i}>
-             <a href={res[i].url} target="_blank" rel="noreferrer">
-               <h1>{res[i].title}</h1>
-               <h4>{res[i].preview}</h4>
-             </a>
-           </span>
-           );
-       })
+//           const formattedArr2 = Object.keys(res).map((title, i) => {
+//           return (
+//            <span key={i}>
+//              <a href={res[i].url} target="_blank" rel="noreferrer">
+//                <h1>{res[i].title}</h1>
+//                <h4>{res[i].preview}</h4>
+//              </a>
+//            </span>
+//            );
+//        })
               
-       setThebeast(formattedArr2.slice(0,4))
+//        setThebeast(formattedArr2.slice(0,4))
             
-    })
+//     })
 
-    setLoading(false)
+//     setLoading(false)
     
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
 
-  return (
+//   return (
     
-    loading ?  beast : <Loader />  
-    );
+//     loading ?  beast : <Loader />  
+//     );
   
-}
+// }
 
 function App() {
 
@@ -332,6 +393,7 @@ function App() {
             <h6>VERSION 3.0.1</h6>
         </header>
 
+
       
         
           <section className="scrapped">
@@ -344,25 +406,42 @@ function App() {
                 <img  src="https://renderapi.s3.amazonaws.com/xxo86RThN.png" alt="" />
               </section>
           </section>  
+
+          <section className="scrapped">
+          
+              
+              <section className="ava" >
+                <img  src="https://renderapi.s3.amazonaws.com/F2WuCu9wE.png" alt="" />
+              </section>
+
+              <section>
+              <h1>LATEST NEWS FROM DECENTRALAND</h1>
+              <Decentraland />
+                </section>
+          </section>  
       
+
+       
 
 
           <section className="scrapped">
+
+          <section>
+                 <h1>LATEST NEWS FROM THE VERGE</h1>
+                 <Theverge />
+                 </section>
                  
                  <section className="ava">
                    <img src="https://renderapi.s3.amazonaws.com/r6QoNHjuY.png" alt="" />
                  </section>
                  
-                 <section>
-                 <h1>LATEST NEWS FROM THE VERGE</h1>
-                 <Theverge />
-                 </section>
+                
 
                </section>
           
 
 
-                <section className="scrapped">
+                {/* <section className="scrapped">
 
                 <section>
                     <h1>LATEST NEWS FROM HYPEBEAST</h1>
@@ -373,13 +452,11 @@ function App() {
                     <img src="https://renderapi.s3.amazonaws.com/fVHpQzUMz.png" alt="" />
                   </section>
 
-                </section> 
+                </section>  */}
 
 
                 <section className="scrapped">
 
-          
-                 
                  <section className="ava">
                    <img src="https://renderapi.s3.amazonaws.com/YgXYoXVqp.png" alt="" />
                  </section>

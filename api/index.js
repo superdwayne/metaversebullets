@@ -187,47 +187,49 @@ app.get('/api/theverge', async (req, res) => {
         url: artURL
         })
     })
+
+    res.send(thevergearticles);
       
-           const theverge = mongoose.model('XR', thevergeSchema, 'theverge2');
+        //    const theverge = mongoose.model('XR', thevergeSchema, 'theverge2');
 
-           theverge.count(function(err, count) {
+        //    theverge.count(function(err, count) {
             
-            if( count === 0 || null) {
-                console.log("No Found Records For Blankess");                    
+        //     if( count === 0 || null) {
+        //         console.log("No Found Records For Blankess");                    
                 
-            } else {
+        //     } else {
 
-                theverge.deleteMany( {thevergearticles} ,
+        //         theverge.deleteMany( {thevergearticles} ,
        
-                    function(err, result){
+        //             function(err, result){
         
-                        if(err){
-                           console.log('error')
-                        }
-                        else{
-                            console.log("success" , count , "items deleted for the Verge  ")
-                        }
+        //                 if(err){
+        //                    console.log('error')
+        //                 }
+        //                 else{
+        //                     console.log("success" , count , "items deleted for the Verge  ")
+        //                 }
                 
-                    }) 
+        //             }) 
                
-            }
-        });
+        //     }
+        // });
 
 
-           theverge.find({}, function (err, users) {
+        //    theverge.find({}, function (err, users) {
     
-                  theverge.collection.insertMany(thevergearticles, function (err, docs) {
-                      if (err) {
-                          return console.error(err);
-                      } else {
-                          // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                          console.log(docs.insertedCount, "Enrties have been added to the for the verge");
-                          res.send(users);
+        //           theverge.collection.insertMany(thevergearticles, function (err, docs) {
+        //               if (err) {
+        //                   return console.error(err);
+        //               } else {
+        //                   // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+        //                   console.log(docs.insertedCount, "Enrties have been added to the for the verge");
+        //                   res.send(users);
    
-                      }
-                  });
+        //               }
+        //           });
               
-              });
+        //       });
        
    
    }).catch(err => console.log(err))

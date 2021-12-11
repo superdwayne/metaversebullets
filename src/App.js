@@ -77,66 +77,66 @@ function Tron(){
   )
 }
 
-function Decentraland()  {
+// function Decentraland()  {
   
-  const [loading, setLoading] = useState(false);
-  const [shapes, setShapes] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [shapes, setShapes] = useState(null);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
         
-      },
-    };
+//       },
+//     };
     
-    console.log("Component mounting..",  loading )
+//     console.log("Component mounting..",  loading )
 
 
-      Request(`/decentraland`, params, (response) => {
+//       Request(`/decentraland`, params, (response) => {
 
-        setLoading(true)
+//         setLoading(true)
         
-        let shape = JSON.parse(JSON.stringify(response))
+//         let shape = JSON.parse(JSON.stringify(response))
 
-       console.log(shape , "loading"  )
+//        console.log(shape , "loading"  )
        
-       if (shape.length === 0) {
-         console.log('No articles')
-         window.location.reload(); 
+//        if (shape.length === 0) {
+//          console.log('No articles')
+//          window.location.reload(); 
 
-       }
-      const formattedArr = Object.keys(shape).map((title, i) => {
-        return (
-        <span key={i}>
-          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
-            <h1>{shape[i].title}</h1>
-            <h4>{shape[i].preview}</h4>
-          </a>
-        </span>
-        );
-    })
+//        }
+//       const formattedArr = Object.keys(shape).map((title, i) => {
+//         return (
+//         <span key={i}>
+//           <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
+//             <h1>{shape[i].title}</h1>
+//             <h4>{shape[i].preview}</h4>
+//           </a>
+//         </span>
+//         );
+//     })
 
-      setShapes(formattedArr.slice(0,3));
+//       setShapes(formattedArr.slice(0,3));
 
        
-    });
+//     });
 
-    setLoading(false)
+//     setLoading(false)
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
 
-  return (
-     loading ? shapes : <Loader /> 
+//   return (
+//      loading ? shapes : <Loader /> 
      
-  )
+//   )
   
-}
+// }
 
 function Articles()  {
   
@@ -199,121 +199,121 @@ function Articles()  {
   
 }
 
-function Theverge() {
+// function Theverge() {
   
-  const [loading, setLoading] = useState(false);
-  const [theverge, setTheverge] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [theverge, setTheverge] = useState(null);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    console.log("inital load" , loading)
+//     console.log("inital load" , loading)
 
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    };
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json',
+//       },
+//     };
      
 
-      Request(`/api/theverge`, params, (response) => {
+//       Request(`/api/theverge`, params, (response) => {
         
 
-        setLoading(true)
+//         setLoading(true)
 
-        console.log(response, "before formatting") 
+//         console.log(response, "before formatting") 
 
-        let res = response
+//         let res = response
 
-        if (res.length === 0) {
-          console.log('No articles')
-          window.location.reload(); 
+//         if (res.length === 0) {
+//           console.log('No articles')
+//           window.location.reload(); 
  
-        }
+//         }
 
-        console.log(res, "after formatting") 
+//         console.log(res, "after formatting") 
 
-          const formattedArr2 = Object.keys(res).map((title, i) => {
-          return (
-           <span key={i}>
-             <a href={res[i].url} target="_blank" rel="noreferrer">
-               <h1>{res[i].title}</h1>
-             </a>
-           </span>
-           );
-       })
+//           const formattedArr2 = Object.keys(res).map((title, i) => {
+//           return (
+//            <span key={i}>
+//              <a href={res[i].url} target="_blank" rel="noreferrer">
+//                <h1>{res[i].title}</h1>
+//              </a>
+//            </span>
+//            );
+//        })
               
-       setTheverge(formattedArr2.slice(0,4))
+//        setTheverge(formattedArr2.slice(0,4))
             
-    })
+//     })
 
-    setLoading(false)
+//     setLoading(false)
     
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
 
 
-  return (
+//   return (
     
-    loading ?  theverge : <Loader />  
-    );
+//     loading ?  theverge : <Loader />  
+//     );
   
-}
+// }
 
-function Xr() {
+// function Xr() {
   
-  const [loading, setLoading] = useState(false);
-  const [thexr, setThexr] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [thexr, setThexr] = useState(null);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    console.log("inital load" , loading)
+//     console.log("inital load" , loading)
 
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+//     const params = {
+//       method: 'GET',
+//       body: JSON.stringify(),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     };
     
-    console.log("Component mounting..",  loading )
+//     console.log("Component mounting..",  loading )
 
-      Request(`api/arpost`, params, (response) => {
+//       Request(`api/arpost`, params, (response) => {
 
-        setLoading(true)
+//         setLoading(true)
 
 
-        console.log(response) 
+//         console.log(response) 
 
-          const formattedArr = Object.keys(response).map((title, i) => {
-          return (
-           <span key={i}>
-             <a href={response[i].url} target="_blank" rel="noreferrer">
-               <h1>{response[i].title}</h1>
-             </a>
-           </span>
-           );
-       })
+//           const formattedArr = Object.keys(response).map((title, i) => {
+//           return (
+//            <span key={i}>
+//              <a href={response[i].url} target="_blank" rel="noreferrer">
+//                <h1>{response[i].title}</h1>
+//              </a>
+//            </span>
+//            );
+//        })
               
-       setThexr(formattedArr.slice(0,4))
+//        setThexr(formattedArr.slice(0,4))
             
-    })
+//     })
 
-    setLoading(false)
+//     setLoading(false)
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
-  return (
+//   return (
     
-    loading ?  thexr : <Loader />  
-    );
+//     loading ?  thexr : <Loader />  
+//     );
   
-}
+// }
 
 // function Hypebeast() {
   
@@ -394,8 +394,7 @@ function App() {
         </header>
 
 
-      
-        
+    
           <section className="scrapped">
           
               <section>
@@ -407,7 +406,7 @@ function App() {
               </section>
           </section>  
 
-          <section className="scrapped">
+          {/* <section className="scrapped">
           
               
               <section className="ava" >
@@ -419,12 +418,12 @@ function App() {
               <Decentraland />
                 </section>
           </section>  
-      
+       */}
 
        
 
 
-          <section className="scrapped">
+          {/* <section className="scrapped">
 
           <section>
                  <h1>LATEST NEWS FROM THE VERGE</h1>
@@ -438,7 +437,7 @@ function App() {
                 
 
                </section>
-          
+           */}
 
 
                 {/* <section className="scrapped">
@@ -455,7 +454,7 @@ function App() {
                 </section>  */}
 
 
-                <section className="scrapped">
+                {/* <section className="scrapped">
 
                  <section className="ava">
                    <img src="https://renderapi.s3.amazonaws.com/YgXYoXVqp.png" alt="" />
@@ -467,7 +466,7 @@ function App() {
                  </section>
 
                </section>
-          
+           */}
 
   
                

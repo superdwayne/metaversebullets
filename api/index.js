@@ -114,52 +114,53 @@ app.get('/api', cors(), async (req, res) => {
             })
         })
 
+        res.send(articles);
 
-            // compile schema to model
-            const blankessarticles = mongoose.model('Book', articlesSchema, 'testoneupdate');
+        //     // compile schema to model
+        //     const blankessarticles = mongoose.model('Book', articlesSchema, 'testoneupdate');
 
 
-            blankessarticles.count(function(err, count) {
+        //     blankessarticles.count(function(err, count) {
 
             
-                if( count === 0 || err) {
-                    console.log("No Found Records For Blankess");                    
+        //         if( count === 0 || err) {
+        //             console.log("No Found Records For Blankess");                    
                     
-                } else {
+        //         } else {
 
-                    blankessarticles.deleteMany( {articles} ,
+        //             blankessarticles.deleteMany( {articles} ,
            
-                        function(err, result){
+        //                 function(err, result){
             
-                            if(err){
-                               console.log('error')
-                            }
-                            else{
-                                console.log("success" , count , "items deleted  ")
-                            }
+        //                     if(err){
+        //                        console.log('error')
+        //                     }
+        //                     else{
+        //                         console.log("success" , count , "items deleted  ")
+        //                     }
                     
-                        }) 
+        //                 }) 
 
                    
-                }
-            });
+        //         }
+        //     });
 
 
-            blankessarticles.find({}, function (err, users) {
+        //     blankessarticles.find({}, function (err, users) {
 
-                blankessarticles.collection.insertMany(articles, function (err, docs) {
+        //         blankessarticles.collection.insertMany(articles, function (err, docs) {
 
-                    if (err) {
-                        return console.error(err);
-                    } else {
-                        // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                        console.log(docs.insertedCount, "Enrties have been added to the for Blankess");
-                        res.send(users);
+        //             if (err) {
+        //                 return console.error(err);
+        //             } else {
+        //                 // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+        //                 console.log(docs.insertedCount, "Enrties have been added to the for Blankess");
+        //                 res.send(users);
  
-                    }
-                });
+        //             }
+        //         });
 
-           });
+        //    });
 
 
     

@@ -41,11 +41,8 @@ app.get('/decentraland', cors(), async (req, res) => {
             })
         })
 
-//         res.send(articles);
 
-// console.log(articles)
-        //     // compile schema to model
-            const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentraland');
+            const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');
 
 
             decentralandarticles.count(function(err, count) {

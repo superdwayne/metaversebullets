@@ -393,7 +393,6 @@ function App() {
             <h6>VERSION 3.0.1</h6>
         </header>
 
-
     
           <section className="scrapped">
           

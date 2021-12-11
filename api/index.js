@@ -41,51 +41,52 @@ app.get('/decentraland', cors(), async (req, res) => {
             })
         })
 
+        res.send(articles);
 
-            const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');
+        //     const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');
 
 
-            decentralandarticles.count(function(err, count) {
+        //     decentralandarticles.count(function(err, count) {
 
             
-                if( count === 0 || err) {
-                    console.log("No Found Records For decentraland");                    
+        //         if( count === 0 || err) {
+        //             console.log("No Found Records For decentraland");                    
                     
-                } else {
+        //         } else {
 
-                    decentralandarticles.deleteMany( {articles} ,
+        //             decentralandarticles.deleteMany( {articles} ,
            
-                        function(err, result){
+        //                 function(err, result){
             
-                            if(err){
-                               console.log('error')
-                            }
-                            else{
-                                console.log("success" , count , "items deleted  ")
-                            }
+        //                     if(err){
+        //                        console.log('error')
+        //                     }
+        //                     else{
+        //                         console.log("success" , count , "items deleted  ")
+        //                     }
                     
-                        }) 
+        //                 }) 
 
                    
-                }
-            });
+        //         }
+        //     });
 
 
-            decentralandarticles.find({}, function (err, users) {
+        //     decentralandarticles.find({}, function (err, users) {
 
-                decentralandarticles.collection.insertMany(articles, function (err, docs) {
+        //         decentralandarticles.collection.insertMany(articles, function (err, docs) {
 
-                    if (err) {
-                        return console.error(err);
-                    } else {
-                        // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-                        console.log(docs.insertedCount, "Enrties have been added to the for decentraland");
-                        res.send(users);
+        //             if (err) {
+        //                 return console.error(err);
+        //             } else {
+        //                 // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+        //                 console.log(docs.insertedCount, "Enrties have been added to the for decentraland");
+        //                 res.send(users);
  
-                    }
-                });
+        //             }
+        //         });
 
-           });
+        //    });
 
 
     

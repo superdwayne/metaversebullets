@@ -77,66 +77,66 @@ function Tron(){
   )
 }
 
-// function Decentraland()  {
+function Decentraland()  {
   
-//   const [loading, setLoading] = useState(false);
-//   const [shapes, setShapes] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [shapes, setShapes] = useState(null);
 
-//   useEffect(() => {
+  useEffect(() => {
 
-//     const params = {
-//       method: 'GET',
-//       body: JSON.stringify(),
-//       headers: {
-//         'Content-Type': 'application/json',
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
         
-//       },
-//     };
+      },
+    };
     
-//     console.log("Component mounting..",  loading )
+    console.log("Component mounting..",  loading )
 
 
-//       Request(`/decentraland`, params, (response) => {
+      Request(`/decentraland`, params, (response) => {
 
-//         setLoading(true)
+        setLoading(true)
         
-//         let shape = JSON.parse(JSON.stringify(response))
+        let shape = JSON.parse(JSON.stringify(response))
 
-//        console.log(shape , "loading"  )
+       console.log(shape , "loading"  )
        
-//        if (shape.length === 0) {
-//          console.log('No articles')
-//          window.location.reload(); 
+       if (shape.length === 0) {
+         console.log('No articles')
+         window.location.reload(); 
 
-//        }
-//       const formattedArr = Object.keys(shape).map((title, i) => {
-//         return (
-//         <span key={i}>
-//           <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
-//             <h1>{shape[i].title}</h1>
-//             <h4>{shape[i].preview}</h4>
-//           </a>
-//         </span>
-//         );
-//     })
+       }
+      const formattedArr = Object.keys(shape).map((title, i) => {
+        return (
+        <span key={i}>
+          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
+            <h1>{shape[i].title}</h1>
+            <h4>{shape[i].preview}</h4>
+          </a>
+        </span>
+        );
+    })
 
-//       setShapes(formattedArr.slice(0,3));
+      setShapes(formattedArr.slice(0,3));
 
        
-//     });
+    });
 
-//     setLoading(false)
+    setLoading(false)
 
-// // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
-//   return (
-//      loading ? shapes : <Loader /> 
+  return (
+     loading ? shapes : <Loader /> 
      
-//   )
+  )
   
-// }
+}
 
 function Articles()  {
   
@@ -405,27 +405,11 @@ function App() {
               </section>
           </section>  
 
-          {/* <section className="scrapped">
-          
-              
-              <section className="ava" >
-                <img  src="https://renderapi.s3.amazonaws.com/F2WuCu9wE.png" alt="" />
-              </section>
-
-              <section>
-              <h1>LATEST NEWS FROM DECENTRALAND</h1>
-              <Decentraland />
-                </section>
-          </section>  
-       */}
-
-       
-
-
+        
           <section className="scrapped">
 
          
-                 
+            
                  <section className="ava">
                    <img src="https://renderapi.s3.amazonaws.com/r6QoNHjuY.png" alt="" />
                  </section>
@@ -467,6 +451,21 @@ function App() {
                
 
                </section>
+
+
+               <section className="scrapped">
+          
+              
+          <section className="ava" >
+            <img  src="https://renderapi.s3.amazonaws.com/F2WuCu9wE.png" alt="" />
+          </section>
+
+          <section>
+          <h1>LATEST NEWS FROM DECENTRALAND</h1>
+          <Decentraland />
+            </section>
+      </section>  
+   
           
 
   

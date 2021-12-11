@@ -96,9 +96,11 @@ function Decentraland()  {
     console.log("Component mounting..",  loading )
 
 
-      Request(`/decentraland`, params, (response) => {
+      Request(`api/decentraland`, params, (response) => {
 
         setLoading(true)
+
+        console.log(response , "DE"  )
         
         let shape = JSON.parse(JSON.stringify(response))
 

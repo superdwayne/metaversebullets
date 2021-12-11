@@ -8,7 +8,7 @@ const articlesSchema = require("./schema");
 const thevergeSchema = require("./thevergeschema");
 // const xrarticlesSchema = require("./xrarticlesSchema");
 // const hypebeastschema = require("./hypebeastschema")
-const decentralandSchema = require("./decentraland");
+// const decentralandSchema = require("./decentralandschema");
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -23,7 +23,7 @@ const arpost = 'https://arpost.co/'
 const decentraland = 'https://decentraland.org/blog/'
 
 
-app.get('/decentraland', cors(), async (req, res) => {
+app.get('/api/decentraland', cors(), async (req, res) => {
     await axios(decentraland).then(function(ressponse)
     {
         const html = ressponse.data
@@ -42,6 +42,8 @@ app.get('/decentraland', cors(), async (req, res) => {
         })
 
         res.send(articles);
+
+        // console.log(articles)
 
         //     const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');
 

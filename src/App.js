@@ -66,7 +66,7 @@ function Box() {
 
 function Tron(){
   return(
-    <Canvas style={{ backgroundColor: "#000000" , height: "250vh", width: "100vw" }}>
+    <Canvas style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw" }}>
      <Suspense fallback={'Initializing'}>
      <CameraControls />
      {/* <Shapetest/> */}
@@ -76,6 +76,72 @@ function Tron(){
     </Canvas>
   )
 }
+
+
+
+function Decrypt()  {
+  
+  const [loading, setLoading] = useState(false);
+  const [shapes, setShapes] = useState(null);
+
+  useEffect(() => {
+
+    const params = {
+      method: 'GET',
+      body: JSON.stringify(),
+      headers: {
+        'Content-Type': 'application/json',
+        
+      },
+    };
+    
+    console.log("Component mounting..",  loading )
+
+
+      Request(`api/decrypt`, params, (response) => {
+
+        setLoading(true)
+
+        console.log(response , "DE"  )
+        
+        let shape = JSON.parse(JSON.stringify(response))
+
+       console.log(shape , "loading"  )
+       
+       if (shape.length === 0) {
+         console.log('No articles')
+         window.location.reload(); 
+
+       }
+      const formattedArr = Object.keys(shape).map((title, i) => {
+        return (
+        <span key={i}>
+          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
+            <h1>{shape[i].title}</h1>
+            <h4>{shape[i].preview}</h4>
+          </a>
+        </span>
+        );
+    })
+
+      setShapes(formattedArr.slice(0,3));
+
+       
+    });
+
+    setLoading(false)
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+  return (
+     loading ? shapes : <Loader /> 
+     
+  )
+  
+}
+
 
 function Decentraland()  {
   
@@ -405,7 +471,36 @@ function App() {
               <section className="ava" >
                 <img  src="https://renderapi.s3.amazonaws.com/xxo86RThN.png" alt="" />
               </section>
-          </section>  
+          </section> 
+
+
+          <section className="scrapped">
+          
+              
+          <section className="ava" >
+            <img  src="https://renderapi.s3.amazonaws.com/F2WuCu9wE.png" alt="" />
+          </section>
+
+          <section>
+          <h1>LATEST NEWS FROM DECENTRALAND</h1>
+          <Decentraland />
+            </section>
+      </section>
+
+      <section className="scrapped">
+          
+      <section>
+          <h1>LATEST NEWS FROM DECRYPT</h1>
+          
+          <Decrypt/>
+            </section>
+              
+          <section className="ava" >
+            <img  src="https://renderapi.s3.amazonaws.com/WGUuFo8ab.png" alt="" />
+          </section>
+
+          
+      </section>   
 
         
           <section className="scrapped">
@@ -454,24 +549,6 @@ function App() {
 
                </section>
 
-
-               <section className="scrapped">
-          
-              
-          <section className="ava" >
-            <img  src="https://renderapi.s3.amazonaws.com/F2WuCu9wE.png" alt="" />
-          </section>
-
-          <section>
-          <h1>LATEST NEWS FROM DECENTRALAND</h1>
-          <Decentraland />
-            </section>
-      </section>  
-   
-          
-
-  
-               
     </div>
 
   );

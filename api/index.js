@@ -22,6 +22,84 @@ const arpost = 'https://arpost.co/'
 // const hypebeast = 'https://hypebeast.com/art'
 const decentraland = 'https://decentraland.org/blog/'
 
+const decrypt = 'https://decrypt.co/'
+
+app.get('/api/decrypt', cors(), async (req, res) => {
+    await axios(decrypt).then(function(ressponse)
+    {
+        const html = ressponse.data
+        const $ = cheerio.load(html)
+        // console.log(html)
+        const articles = []
+        $('.GridItem', html).each((i , elm) => {
+            const title = $(elm).find('h2').text().substring(0, 71)
+            const artURL = $(elm).find('a').attr('href')
+            const preview = $(elm).find('p').text().substring(0, 71)
+            articles.push({
+            title: title,
+            preview: preview,
+            atricleurl:'https://decrypt.co'+artURL
+            })
+        })
+
+        res.send(articles);
+
+        // console.log(articles)
+
+        //     const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');
+
+
+        //     decentralandarticles.count(function(err, count) {
+
+            
+        //         if( count === 0 || err) {
+        //             console.log("No Found Records For decentraland");                    
+                    
+        //         } else {
+
+        //             decentralandarticles.deleteMany( {articles} ,
+           
+        //                 function(err, result){
+            
+        //                     if(err){
+        //                        console.log('error')
+        //                     }
+        //                     else{
+        //                         console.log("success" , count , "items deleted  ")
+        //                     }
+                    
+        //                 }) 
+
+                   
+        //         }
+        //     });
+
+
+        //     decentralandarticles.find({}, function (err, users) {
+
+        //         decentralandarticles.collection.insertMany(articles, function (err, docs) {
+
+        //             if (err) {
+        //                 return console.error(err);
+        //             } else {
+        //                 // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
+        //                 console.log(docs.insertedCount, "Enrties have been added to the for decentraland");
+        //                 res.send(users);
+ 
+        //             }
+        //         });
+
+        //    });
+
+
+    
+    }).catch(err => console.log(err))
+    
+
+
+  });
+
+
 
 app.get('/api/decentraland', cors(), async (req, res) => {
     await axios(decentraland).then(function(ressponse)

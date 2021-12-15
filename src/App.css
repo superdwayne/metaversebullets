@@ -98,6 +98,10 @@ header h6 {
 @media (max-width:600px),
 (max-device-width:600px) {
 
+  header {
+    width: 100% !important;
+  }
+
   .scrapped {
     display: block;
     width: 100%;

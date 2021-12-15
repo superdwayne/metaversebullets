@@ -452,6 +452,11 @@ function App() {
 
   const elements = [
     {
+      api: <Decrypt />,
+      img:"https://renderapi.s3.amazonaws.com/WGUuFo8ab.png",
+      title: "DECRYPT"
+    },
+    {
     api: <Articles />,
     img:"https://renderapi.s3.amazonaws.com/xxo86RThN.png",
     title: "BANKLESSHQ"
@@ -460,11 +465,6 @@ function App() {
     api: <Decentraland />,
     img:"https://renderapi.s3.amazonaws.com/F2WuCu9wE.png",
     title: "DECENTRALAND"
-  },
-  {
-    api: <Decrypt />,
-    img:"https://renderapi.s3.amazonaws.com/WGUuFo8ab.png",
-    title: "DECRYPT"
   },
   {
     api: <Theverge />,

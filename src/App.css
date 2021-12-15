@@ -102,6 +102,10 @@ header h6 {
     width: 100% !important;
   }
 
+  .scrapped > section {
+    padding-top: 30px;
+  }
+
   .scrapped {
     display: block;
     width: 100%;

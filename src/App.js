@@ -1,9 +1,13 @@
-import React, {  useRef , Suspense,  useState, useEffect} from 'react'
+import React, {  useRef , Suspense, useEffect} from 'react'
 import { Canvas, useFrame, extend, useThree, } from '@react-three/fiber'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import Request from "./requests";
 import './App.css';
 import ReactGA from 'react-ga';
+import Decrypt from "./Functions/decrypt"
+import Decentraland from "./Functions/decrypt"
+import BlanklessHQ from "./Functions/blanklesshq"
+import Theverge from "./Functions/theverge"
+import ARpost from "./Functions/arpost"
 
 extend({ OrbitControls }); 
 
@@ -12,18 +16,6 @@ const initGA = () => {
  ReactGA.initialize('UA-102019824-2') 
  ReactGA.pageview(window.location.pathname + window.location.search);
 } 
-
-
-
-function Loader(){
-
-  return (
-    <>
-       <img src="https://cdn-static.farfetch-contents.com/Content/UP/EXPERIENCE/Metaverse/littlecog.png" alt="Loading" className="spinner_small" />
-        <img src="https://cdn-static.farfetch-contents.com/Content/UP/EXPERIENCE/Metaverse/bigcog.png" alt="Loading" className="spinner_big" />
-      </>
-  )
-}
 
 
 const CameraControls = () => {
@@ -79,373 +71,6 @@ function Tron(){
 
 
 
-function Decrypt()  {
-  
-  const [loading, setLoading] = useState(false);
-  const [shapes, setShapes] = useState(null);
-
-  useEffect(() => {
-
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-        
-      },
-    };
-    
-    console.log("Component mounting..",  loading )
-
-
-      Request(`api/decrypt`, params, (response) => {
-
-        setLoading(true)
-
-        console.log(response , "DE"  )
-        
-        let shape = JSON.parse(JSON.stringify(response))
-
-       console.log(shape , "loading"  )
-       
-       if (shape.length === 0) {
-         console.log('No articles')
-         window.location.reload(); 
-
-       }
-      const formattedArr = Object.keys(shape).map((title, i) => {
-        return (
-        <span key={i}>
-          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
-            <h1>{shape[i].title}</h1>
-            <h4>{shape[i].preview}</h4>
-          </a>
-        </span>
-        );
-    })
-
-      setShapes(formattedArr.slice(0,3));
-
-       
-    });
-
-    setLoading(false)
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-
-  return (
-     loading ? shapes : <Loader /> 
-     
-  )
-  
-}
-
-
-function Decentraland()  {
-  
-  const [loading, setLoading] = useState(false);
-  const [shapes, setShapes] = useState(null);
-
-  useEffect(() => {
-
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-        
-      },
-    };
-    
-    console.log("Component mounting..",  loading )
-
-
-      Request(`api/decentraland`, params, (response) => {
-
-        setLoading(true)
-
-        console.log(response , "DE"  )
-        
-        let shape = JSON.parse(JSON.stringify(response))
-
-       console.log(shape , "loading"  )
-       
-       if (shape.length === 0) {
-         console.log('No articles')
-         window.location.reload(); 
-
-       }
-      const formattedArr = Object.keys(shape).map((title, i) => {
-        return (
-        <span key={i}>
-          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
-            <h1>{shape[i].title}</h1>
-            <h4>{shape[i].preview}</h4>
-          </a>
-        </span>
-        );
-    })
-
-      setShapes(formattedArr.slice(0,3));
-
-       
-    });
-
-    setLoading(false)
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-
-  return (
-     loading ? shapes : <Loader /> 
-     
-  )
-  
-}
-
-function Articles()  {
-  
-  const [loading, setLoading] = useState(false);
-  const [shapes, setShapes] = useState(null);
-
-  useEffect(() => {
-
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-        
-      },
-    };
-    
-    console.log("Component mounting..",  loading )
-
-
-      Request(`/api`, params, (response) => {
-
-        setLoading(true)
-        
-        let shape = JSON.parse(JSON.stringify(response))
-
-       console.log(shape , "loading"  )
-       
-       if (shape.length === 0) {
-         console.log('No articles')
-         window.location.reload(); 
-
-       }
-      const formattedArr = Object.keys(shape).map((title, i) => {
-        return (
-        <span key={i}>
-          <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
-            <h1>{shape[i].title}</h1>
-            <h4>{shape[i].preview}</h4>
-          </a>
-        </span>
-        );
-    })
-
-      setShapes(formattedArr.slice(0,4));
-
-       
-    });
-
-    setLoading(false)
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-
-  return (
-     loading ? shapes : <Loader /> 
-     
-  )
-  
-}
-
-function Theverge() {
-  
-  const [loading, setLoading] = useState(false);
-  const [theverge, setTheverge] = useState(null);
-
-  useEffect(() => {
-
-    console.log("inital load" , loading)
-
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    };
-     
-
-      Request(`/api/theverge`, params, (response) => {
-        
-
-        setLoading(true)
-
-        console.log(response, "before formatting") 
-
-        let res = response
-
-        if (res.length === 0) {
-          console.log('No articles')
-          window.location.reload(); 
- 
-        }
-
-        console.log(res, "after formatting") 
-
-          const formattedArr2 = Object.keys(res).map((title, i) => {
-          return (
-           <span key={i}>
-             <a href={res[i].url} target="_blank" rel="noreferrer">
-               <h1>{res[i].title}</h1>
-             </a>
-           </span>
-           );
-       })
-              
-       setTheverge(formattedArr2.slice(0,4))
-            
-    })
-
-    setLoading(false)
-    
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-
-
-  return (
-    
-    loading ?  theverge : <Loader />  
-    );
-  
-}
-
-function Xr() {
-  
-  const [loading, setLoading] = useState(false);
-  const [thexr, setThexr] = useState(null);
-
-  useEffect(() => {
-
-    console.log("inital load" , loading)
-
-    const params = {
-      method: 'GET',
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    
-    console.log("Component mounting..",  loading )
-
-      Request(`api/arpost`, params, (response) => {
-
-        setLoading(true)
-
-
-        console.log(response) 
-
-          const formattedArr = Object.keys(response).map((title, i) => {
-          return (
-           <span key={i}>
-             <a href={response[i].url} target="_blank" rel="noreferrer">
-               <h1>{response[i].title}</h1>
-             </a>
-           </span>
-           );
-       })
-              
-       setThexr(formattedArr.slice(0,4))
-            
-    })
-
-    setLoading(false)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    
-    loading ?  thexr : <Loader />  
-    );
-  
-}
-
-// function Hypebeast() {
-  
-//   const [loading, setLoading] = useState(false);
-//   const [beast, setThebeast] = useState(null);
-
-//   useEffect(() => {
-
-//     console.log("inital load" , loading)
-
-//     const params = {
-//       method: 'GET',
-//       body: JSON.stringify(),
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Accept': 'application/json',
-//       },
-//     };
-     
-
-//       Request(`/api/hypebeast`, params, (response) => {
-
-//         setLoading(true)
-
-//         console.log(response, "before formatting") 
-
-//         let res = response
-
-//         if (res.length === 0) {
-//           console.log('No articles')
-//           window.location.reload(); 
- 
-//         }
-
-//         console.log(res, "after formatting") 
-
-//           const formattedArr2 = Object.keys(res).map((title, i) => {
-//           return (
-//            <span key={i}>
-//              <a href={res[i].url} target="_blank" rel="noreferrer">
-//                <h1>{res[i].title}</h1>
-//                <h4>{res[i].preview}</h4>
-//              </a>
-//            </span>
-//            );
-//        })
-              
-//        setThebeast(formattedArr2.slice(0,4))
-            
-//     })
-
-//     setLoading(false)
-    
-// // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-
-
-//   return (
-    
-//     loading ?  beast : <Loader />  
-//     );
-  
-// }
-
 function App() {
 
   useEffect(() => { initGA(); }, []);
@@ -457,7 +82,7 @@ function App() {
       title: "DECRYPT"
     },
     {
-    api: <Articles />,
+    api: <BlanklessHQ />,
     img:"https://renderapi.s3.amazonaws.com/xxo86RThN.png",
     title: "BANKLESSHQ"
   },
@@ -472,7 +97,7 @@ function App() {
     title: "THE VERGE"
   },
   {
-    api: <Xr />,
+    api: <ARpost />,
     img:"https://renderapi.s3.amazonaws.com/YgXYoXVqp.png",
     title: "THE AR POST"
   }

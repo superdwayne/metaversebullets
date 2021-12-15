@@ -262,8 +262,7 @@ app.get('/api', cors(), async (req, res) => {
 
 app.get('/api/theverge', async (req, res) => {
 
-    res.setHeader('Content-Type', 'application/json');
-    
+
   await axios(theverges).then(function(ressponse)
    {
        const html = ressponse.data
@@ -334,7 +333,6 @@ app.get('/api/theverge', async (req, res) => {
 
  app.get('/api/arpost', async (req, res) => {
 
-    res.setHeader('Content-Type', 'application/json');
     
   await axios(arpost).then(function(ressponse)
    {

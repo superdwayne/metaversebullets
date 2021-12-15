@@ -121,7 +121,9 @@ app.get('/api/decentraland', cors(), async (req, res) => {
 
         res.send(articles);
 
-        // console.log(articles)
+        if (res.statusCode !== 200){
+            res.send([{title: 'Refresh for latest articles'}]);
+        } 
 
         //     const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');
 
@@ -197,6 +199,13 @@ app.get('/api', cors(), async (req, res) => {
 
         res.send(articles);
 
+        console.log(res.statusCode)
+
+        if (res.statusCode !== 200){
+            res.send([{title: 'Refresh for latest articles'}]);
+        } 
+
+
         //     // compile schema to model
         //     const blankessarticles = mongoose.model('Book', articlesSchema, 'testoneupdate');
 
@@ -270,6 +279,10 @@ app.get('/api/theverge', async (req, res) => {
     })
 
     res.send(thevergearticles);
+
+    if (res.statusCode !== 200){
+        res.send([{title: 'Refresh for latest articles'}]);
+    } 
       
         //    const theverge = mongoose.model('XR', thevergeSchema, 'theverge2');
 
@@ -339,6 +352,10 @@ app.get('/api/theverge', async (req, res) => {
     })
    
 res.send(xrarticles)
+
+if (res.statusCode !== 200){
+    res.send([{title: 'Refresh for latest articles'}]);
+} 
       
         //    const Xr = mongoose.model('Verge', xrarticlesSchema, 'xr22');
    

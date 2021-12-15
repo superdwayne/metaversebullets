@@ -66,7 +66,7 @@ function Box() {
 
 function Tron(){
   return(
-    <Canvas style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw" }}>
+    <Canvas style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: -9 }}>
      <Suspense fallback={'Initializing'}>
      <CameraControls />
      {/* <Shapetest/> */}
@@ -450,80 +450,81 @@ function App() {
 
   useEffect(() => { initGA(); }, []);
 
+  const elements = [
+    {
+    api: <Articles />,
+    img:"https://renderapi.s3.amazonaws.com/xxo86RThN.png",
+    title: "BANKLESSHQ"
+  },
+  {
+    api: <Decentraland />,
+    img:"https://renderapi.s3.amazonaws.com/F2WuCu9wE.png",
+    title: "DECENTRALAND"
+  },
+  {
+    api: <Decrypt />,
+    img:"https://renderapi.s3.amazonaws.com/WGUuFo8ab.png",
+    title: "DECRYPT"
+  },
+  {
+    api: <Theverge />,
+    img:"https://renderapi.s3.amazonaws.com/r6QoNHjuY.png",
+    title: "THE VERGE"
+  },
+  {
+    api: <Xr />,
+    img:"https://renderapi.s3.amazonaws.com/YgXYoXVqp.png",
+    title: "THE AR POST"
+  }
+]
+
+  const ArticleLoop = Object.keys(elements).map((title, i) => {
+
+    if (i % 2) {
+      return (
+        <section className="scrapped">
+            <section className="ava" >
+              <img src={elements[i].img} alt="" />
+            </section>
+            <section>
+              <h1> LATEST NEWS FROM {elements[i].title}</h1>
+              {elements[i].api}
+            </section>
+        </section>
+      );
+    } else {
+      return (
+        <section className="scrapped">
+          <section>
+            <h1>LATEST NEWS FROM {elements[i].title}</h1>
+            {elements[i].api}
+          </section>
+          <section className="ava" >
+            <img src={elements[i].img} alt="" />
+          </section>
+        </section>
+      );
+    }
+  })
+
   return (
     <div className="App">
-   
 
     <Tron />
+
+    <section className="dpm">
    
       <header>
             <h1>METAVERSE BITES</h1>
             <h6>VERSION 3.0.1</h6>
         </header>
 
-    
-          <section className="scrapped">
-          
-              <section>
-              <h1>LATEST NEWS FROM BANKLESSHQ</h1>
-                  <Articles />
-                </section>
-              <section className="ava" >
-                <img  src="https://renderapi.s3.amazonaws.com/xxo86RThN.png" alt="" />
-              </section>
-          </section> 
-
-
-          <section className="scrapped">
-          
-              
-          <section className="ava" >
-            <img  src="https://renderapi.s3.amazonaws.com/F2WuCu9wE.png" alt="" />
-          </section>
-
-          <section>
-          <h1>LATEST NEWS FROM DECENTRALAND</h1>
-          <Decentraland />
-            </section>
-      </section>
-
-      <section className="scrapped">
-          
-      <section>
-          <h1>LATEST NEWS FROM DECRYPT</h1>
-          
-          <Decrypt/>
-            </section>
-              
-          <section className="ava" >
-            <img  src="https://renderapi.s3.amazonaws.com/WGUuFo8ab.png" alt="" />
-          </section>
-
-          
-      </section>   
-
+        {ArticleLoop}
         
-          <section className="scrapped">
-
-         
-            
-                 <section className="ava">
-                   <img src="https://renderapi.s3.amazonaws.com/r6QoNHjuY.png" alt="" />
-                 </section>
-                 
-                 <section>
-                 <h1>LATEST NEWS FROM THE VERGE</h1>
-                 <Theverge />
-                 </section>
-
-               </section>
-          
-
-
                 {/* <section className="scrapped">
 
                 <section>
-                    <h1>LATEST NEWS FROM HYPEBEAST</h1>
+                    <h1>HYPEBEAST</h1>
                     <Hypebeast />
                   </section>
                  
@@ -532,21 +533,6 @@ function App() {
                   </section>
 
                 </section>  */}
-
-
-                <section className="scrapped">
-
-                  
-                <section>
-                  <h1>LATEST NEWS FROM THE ARPOST</h1>
-                  <Xr />
-                  </section>
-
-                 <section className="ava">
-                   <img src="https://renderapi.s3.amazonaws.com/YgXYoXVqp.png" alt="" />
-                 </section>
-               
-
                </section>
 
     </div>

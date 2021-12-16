@@ -8,7 +8,7 @@ import Decentraland from "./Functions/decentraland"
 import BlanklessHQ from "./Functions/blanklesshq"
 import Theverge from "./Functions/theverge"
 import ARpost from "./Functions/arpost"
-
+import useMouse from '@react-hook/mouse-position'
 extend({ OrbitControls }); 
 
 
@@ -56,17 +56,51 @@ function Box() {
   )
 }
 
+
+
 function Tron(){
-  return(
-    <Canvas style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: -9 }}>
-     <Suspense fallback={'Initializing'}>
-     <CameraControls />
-     {/* <Shapetest/> */}
-        <Box/>
-        <ambientLight args={[0xffffff]} intensity={0.97}  />
-     </Suspense>
-    </Canvas>
-  )
+  const target = React.useRef(null)
+  const mouse = useMouse(target, {
+    fps: 60,
+    enterDelay: 100,
+    leaveDelay: 100,
+  })
+
+
+  if (mouse.isOver) {
+
+    return(
+
+    <Canvas ref={target} style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: 9 }}>
+    <Suspense fallback={'Initializing'}>
+    
+    <CameraControls />
+    {/* <Shapetest/> */}
+       <Box/>
+       <ambientLight args={[0xffffff]} intensity={0.97}  />
+    </Suspense>
+   </Canvas>
+    )
+
+  } else {
+
+    return(
+
+    <Canvas ref={target} style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: -9 }}>
+    <Suspense fallback={'Initializing'}>
+    
+    <CameraControls />
+    {/* <Shapetest/> */}
+       <Box/>
+       <ambientLight args={[0xffffff]} intensity={0.97}  />
+    </Suspense>
+   </Canvas>
+
+    )
+  }
+  
+    
+ 
 }
 
 
@@ -103,11 +137,13 @@ function App() {
   }
 ]
 
+
+   
   const ArticleLoop = Object.keys(elements).map((title, i) => {
 
     if (i % 2) {
       return (
-        <section className="scrapped">
+        <section className="scrapped"  >
             <section className="ava" >
               <img src={elements[i].img} alt="" />
             </section>
@@ -116,10 +152,11 @@ function App() {
               {elements[i].api}
             </section>
         </section>
+       
       );
     } else {
       return (
-        <section className="scrapped">
+        <section className="scrapped"  >
           <section>
             <h1>LATEST NEWS FROM {elements[i].title}</h1>
             {elements[i].api}
@@ -132,20 +169,22 @@ function App() {
     }
   })
 
+
   return (
     <div className="App">
 
     <Tron />
 
-    <section className="dpm">
+    <section className="dpm" >
    
       <header>
             <h1>METAVERSE BITES</h1>
             <h6>VERSION 3.0.1</h6>
         </header>
 
-        {ArticleLoop}
-        
+     
+          {ArticleLoop}
+     
                 {/* <section className="scrapped">
 
                 <section>

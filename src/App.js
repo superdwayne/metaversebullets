@@ -31,7 +31,7 @@ const CameraControls = () => {
       ref={controls}
       args={[camera, domElement]}
       enableZoom={false}
-      // position={[0.5, -0.7, 0]}
+      position={[0.5, -0.7, 0]}
       maxAzimuthAngle={Math.PI / 4}
       maxPolarAngle={Math.PI}
       minAzimuthAngle={-Math.PI / 4}
@@ -68,14 +68,11 @@ function Tron(){
 
 
   if (mouse.isOver) {
-
     return(
-
     <Canvas ref={target} style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: 9 }}>
     <Suspense fallback={'Initializing'}>
     
     <CameraControls />
-    {/* <Shapetest/> */}
        <Box/>
        <ambientLight args={[0xffffff]} intensity={0.97}  />
     </Suspense>
@@ -90,7 +87,6 @@ function Tron(){
     <Suspense fallback={'Initializing'}>
     
     <CameraControls />
-    {/* <Shapetest/> */}
        <Box/>
        <ambientLight args={[0xffffff]} intensity={0.97}  />
     </Suspense>

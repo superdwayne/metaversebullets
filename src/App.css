@@ -101,6 +101,10 @@ header h6 {
 @media (max-width:600px),
 (max-device-width:600px) {
 
+  .dpm {
+    width: 100% !important;
+  }
+
   header {
     width: 100% !important;
   }

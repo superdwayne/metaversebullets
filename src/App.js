@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import './App.css';
 import ReactGA from 'react-ga';
 import Decrypt from "./Functions/decrypt"
-import Decentraland from "./Functions/decrypt"
+import Decentraland from "./Functions/decentraland"
 import BlanklessHQ from "./Functions/blanklesshq"
 import Theverge from "./Functions/theverge"
 import ARpost from "./Functions/arpost"

@@ -44,6 +44,10 @@ app.get('/api/decrypt', cors(), async (req, res) => {
 
         res.send(articles);
 
+        if (res.statusCode !== 200){
+            res.send([{title: 'Refresh for latest articles'}]);
+        } 
+
         // console.log(articles)
 
         //     const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');

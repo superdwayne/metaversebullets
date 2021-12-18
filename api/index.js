@@ -17,7 +17,7 @@ const PORT = process.env.PORT
 
 
 const banklesshq = 'https://metaversal.banklesshq.com/'
-const theverges = 'https://www.theverge.com/fortnite'
+const theverges = 'https://www.theverge.com/tech'
 const arpost = 'https://arpost.co/'
 // const hypebeast = 'https://hypebeast.com/art'
 const decentraland = 'https://decentraland.org/blog/'

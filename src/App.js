@@ -74,6 +74,7 @@ function Tron(){
     <Suspense fallback={'Initializing'}>
     
     <CameraControls />
+    
        <Box/>
        <ambientLight args={[0xffffff]} intensity={0.97}  />
     </Suspense>

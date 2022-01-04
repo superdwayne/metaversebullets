@@ -7,8 +7,9 @@
 #VRButton {
   background-color: orange;
   bottom: 0px !important;
-  top: -1054px !important;
+  top:  -900px ​!important;
     position: relative !important;
+    left: 20px !important;
 }
 
 html {

@@ -179,8 +179,8 @@ function App() {
             <h6>VERSION 3.0.1</h6>
         </header>
 
-     
-          {ArticleLoop}
+{/*      
+          {ArticleLoop} */}
      
                 {/* <section className="scrapped">
 

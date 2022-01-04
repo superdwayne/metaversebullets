@@ -2,6 +2,7 @@ import React, {  useRef , Suspense, useEffect} from 'react'
 import { Canvas, useFrame, extend, useThree, } from '@react-three/fiber'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import './App.css';
+import { VRCanvas } from '@react-three/xr'
 import ReactGA from 'react-ga';
 import Decrypt from "./Functions/decrypt"
 import Decentraland from "./Functions/decentraland"
@@ -69,14 +70,14 @@ function Tron(){
 
   if (mouse.isOver) {
     return(
-    <Canvas ref={target} style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: 9 }}>
+    <VRCanvas ref={target} style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: 9 }}>
     <Suspense fallback={'Initializing'}>
     
     <CameraControls />
        <Box/>
        <ambientLight args={[0xffffff]} intensity={0.97}  />
     </Suspense>
-   </Canvas>
+   </VRCanvas>
     )
 
   } else {

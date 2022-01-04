@@ -4,6 +4,13 @@
   flex-direction: row;
 }
 
+#VRButton {
+  background-color: orange;
+  bottom: 0px !important;
+  top: -1054px !important;
+    position: relative !important;
+}
+
 html {
   background-color: #000;
 }

@@ -85,22 +85,19 @@ function Tron(){
 
     return(
 
-    <Canvas ref={target} style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: -9 }}>
+    <VRCanvas ref={target} style={{ backgroundColor: "#000000" , height: "290vh", width: "100vw", position: "absolute" , zIndex: -9 }}>
     <Suspense fallback={'Initializing'}>
     
     <CameraControls />
        <Box/>
        <ambientLight args={[0xffffff]} intensity={0.97}  />
     </Suspense>
-   </Canvas>
+   </VRCanvas>
 
     )
   }
-  
-    
- 
+   
 }
-
 
 
 function App() {

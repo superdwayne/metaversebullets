@@ -136,35 +136,35 @@ function App() {
 
 
    
-  const ArticleLoop = Object.keys(elements).map((title, i) => {
+  // const ArticleLoop = Object.keys(elements).map((title, i) => {
 
-    if (i % 2) {
-      return (
-        <section className="scrapped"  >
-            <section className="ava" >
-              <img src={elements[i].img} alt="" />
-            </section>
-            <section>
-              <h1> LATEST NEWS FROM {elements[i].title}</h1>
-              {elements[i].api}
-            </section>
-        </section>
+  //   if (i % 2) {
+  //     return (
+  //       <section className="scrapped"  >
+  //           <section className="ava" >
+  //             <img src={elements[i].img} alt="" />
+  //           </section>
+  //           <section>
+  //             <h1> LATEST NEWS FROM {elements[i].title}</h1>
+  //             {elements[i].api}
+  //           </section>
+  //       </section>
        
-      );
-    } else {
-      return (
-        <section className="scrapped"  >
-          <section>
-            <h1>LATEST NEWS FROM {elements[i].title}</h1>
-            {elements[i].api}
-          </section>
-          <section className="ava" >
-            <img src={elements[i].img} alt="" />
-          </section>
-        </section>
-      );
-    }
-  })
+  //     );
+  //   } else {
+  //     return (
+  //       <section className="scrapped"  >
+  //         <section>
+  //           <h1>LATEST NEWS FROM {elements[i].title}</h1>
+  //           {elements[i].api}
+  //         </section>
+  //         <section className="ava" >
+  //           <img src={elements[i].img} alt="" />
+  //         </section>
+  //       </section>
+  //     );
+  //   }
+  // })
 
 
   return (

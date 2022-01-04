@@ -141,26 +141,26 @@ function App() {
     if (i % 2) {
       return (
         <section className="scrapped"  >
-            {/* <section className="ava" >
+            <section className="ava" >
               <img src={elements[i].img} alt="" />
             </section>
             <section>
               <h1> LATEST NEWS FROM {elements[i].title}</h1>
               {elements[i].api}
-            </section> */}
+            </section>
         </section>
        
       );
     } else {
       return (
         <section className="scrapped"  >
-          {/* <section>
+          <section>
             <h1>LATEST NEWS FROM {elements[i].title}</h1>
             {elements[i].api}
           </section>
           <section className="ava" >
             <img src={elements[i].img} alt="" />
-          </section> */}
+          </section>
         </section>
       );
     }

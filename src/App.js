@@ -209,13 +209,13 @@ function Model({mouse, ...props }) {
               <group position={[0, 0.13, 0]} rotation={[-0.06, 0, 0]}>
                 <group position={[0, 0.12, 0]} rotation={[0.09, 0, 0]}>
                   <group position={[0, 0.16, 0]} rotation={[0.41, 0, 0]}>
-                    <group position={[0, 0.12, 0]} rotation={[-0.33, 0, 0]} />
+                              <group position={[0, 0.12, 0]} rotation={[-0.33, 0, 0]} />
                   </group>
                   <group position={[0.05, 0.14, -0.01]} rotation={[1.56, -0.04, -1.58]}>
                     <group position={[0, 0.12, 0]} rotation={[1, 0.02, -0.14]}>
                       <group position={[0, 0.29, 0]} rotation={[-0.11, 0.02, 0.45]}>
-                        <group position={[0, 0.25, 0]} rotation={[0.09, 0.08, -0.04]}>
-                          <group position={[-0.03, 0.03, 0.01]} rotation={[0.32, 0.12, 0.85]}>
+                             <group position={[0, 0.25, 0]} rotation={[0.09, 0.08, -0.04]}>
+                                             <group position={[-0.03, 0.03, 0.01]} rotation={[0.32, 0.12, 0.85]}>
                             <group position={[0, 0.04, 0]} rotation={[0.06, -0.17, -0.5]}>
                               <group position={[0, 0.03, 0]} rotation={[0.02, -0.05, -0.17]} />
                             </group>
@@ -427,7 +427,7 @@ function Model({mouse, ...props }) {
    
       <header>
             <h1>METAVERSE BITES</h1>
-            <h6>VERSION 3.0.1</h6>
+            <h6>VERSION 3.0.2</h6>
         </header>
 
      

@@ -116,6 +116,10 @@ header h6 {
 @media (max-width:600px),
 (max-device-width:600px) {
 
+  canvas {
+    height: 350px !important;
+  }
+
   .dpm {
     width: 100% !important;
   }

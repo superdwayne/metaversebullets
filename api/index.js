@@ -13,7 +13,7 @@ const thevergeSchema = require("./thevergeschema");
 const dotenv = require('dotenv');
 dotenv.config();
 
-const PORT = process.env.PORT 
+const PORT = 5000
 
 
 const banklesshq = 'https://metaversal.banklesshq.com/'

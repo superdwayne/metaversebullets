@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-hook/mouse-position": "^4.1.3",
+    "@react-three/drei": "^8.15.1",
     "@react-three/xr": "^3.2.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -23,12 +24,12 @@
     "react-ga": "^3.3.0",
     "react-scripts": "4.0.3",
     "react-three-fiber": "^6.0.13",
-    "three": "^0.134.0",
+    "three": "^0.138.3",
     "vercel": "^23.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev_server": " cd api && nodemon index.js",
+    "dev_server": " cd api && nodemon index.js --ignore client",
     "dev_client": "yarn start",
     "dpm": " concurrently \"yarn run dev_server\" \"yarn run dev_client\"",
     "start": "react-scripts start",

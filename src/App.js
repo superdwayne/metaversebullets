@@ -13,6 +13,7 @@ import BlanklessHQ from "./Functions/blanklesshq"
 import Theverge from "./Functions/theverge"
 import ARpost from "./Functions/arpost"
 import useMouse from '@react-hook/mouse-position'
+import WaveDpm from './Avatars/DPM-Wave'
 extend({ OrbitControls }); 
 
 
@@ -142,6 +143,7 @@ function App() {
     api: <ARpost />,
     img:"https://renderapi.s3.amazonaws.com/nXvD33hNk.png",
     title: "THE AR POST",
+    avatar: <WaveDpm scale={[2,2,2]} />
 
   }
 ]
@@ -202,20 +204,19 @@ function Model({mouse, ...props }) {
         />
         
   <group ref={group} {...props} dispose={null}>
-  
         <group position={[-1.68, 0.02, 0.07]}>
           <group position={[0, 1.02, 0.01]} rotation={[0.03, 0, 0]}>
             <group position={[0, 0.1, 0]} rotation={[-0.14, 0, 0]}>
               <group position={[0, 0.13, 0]} rotation={[-0.06, 0, 0]}>
                 <group position={[0, 0.12, 0]} rotation={[0.09, 0, 0]}>
                   <group position={[0, 0.16, 0]} rotation={[0.41, 0, 0]}>
-                              <group position={[0, 0.12, 0]} rotation={[-0.33, 0, 0]} />
+                    <group position={[0, 0.12, 0]} rotation={[-0.33, 0, 0]} />
                   </group>
                   <group position={[0.05, 0.14, -0.01]} rotation={[1.56, -0.04, -1.58]}>
                     <group position={[0, 0.12, 0]} rotation={[1, 0.02, -0.14]}>
                       <group position={[0, 0.29, 0]} rotation={[-0.11, 0.02, 0.45]}>
                              <group position={[0, 0.25, 0]} rotation={[0.09, 0.08, -0.04]}>
-                                             <group position={[-0.03, 0.03, 0.01]} rotation={[0.32, 0.12, 0.85]}>
+                              <group position={[-0.03, 0.03, 0.01]} rotation={[0.32, 0.12, 0.85]}>
                             <group position={[0, 0.04, 0]} rotation={[0.06, -0.17, -0.5]}>
                               <group position={[0, 0.03, 0]} rotation={[0.02, -0.05, -0.17]} />
                             </group>
@@ -392,7 +393,7 @@ function Model({mouse, ...props }) {
           <section className="ava" >
         {/* The logic below is to allow for an avatar to be shown insead of an image, if the avatar is present */}
         { elements[i].avatar ?  
-         <Canvas  camera={{ position: [0, 0, 2.75], fov: 20 }}
+         <Canvas  camera={{ position: [0, 0, 2.75], fov: 20 }} /* fov is 20 */ 
       pixelRatio={[1, 2]}
    style={{backgroundColor: "white" , display: "block" }}>
           
@@ -406,11 +407,7 @@ function Model({mouse, ...props }) {
                
            </Suspense>
         </Canvas> :
-        <img src={elements[i].img} alt="" /> }
-
-         
-          
-           
+        <img src={elements[i].img} alt="" /> }       
           </section>
         </section>
       );

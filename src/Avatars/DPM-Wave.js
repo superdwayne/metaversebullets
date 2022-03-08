@@ -1,14 +1,9 @@
 import React, { useRef, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-
 
 export default function ModelWave({ ...props }) {
 
-
   const group = useRef()
-  const { camera, gl: { domElement } } = useThree();
-  const controls = React.useRef()
   const { nodes, materials, animations } = useGLTF('https://cdn-static.farfetch-contents.com/Content/UP/EXPERIENCE/Metaverse/wave-v2.glb')
   const { actions } = useAnimations(animations, group)
 

@@ -22,7 +22,7 @@ function Decrypt()  {
       console.log("Component mounting..",  loading )
   
   
-        Request(`api/decrypt`, params, (response) => {
+        Request(`api/inevitable`, params, (response) => {
   
           console.log("test")
 
@@ -51,7 +51,7 @@ function Decrypt()  {
           );
       })
   
-        setShapes(formattedArr.slice(0,2));
+        setShapes(formattedArr.slice(0,4));
   
          
       });

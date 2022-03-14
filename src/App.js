@@ -9,7 +9,7 @@ import { VRCanvas } from '@react-three/xr'
 import ReactGA from 'react-ga';
 import Decrypt from "./Functions/decrypt"
 import Decentraland from "./Functions/decentraland"
-import BlanklessHQ from "./Functions/blanklesshq"
+import Inevitable from "./Functions/inevitable"
 import Theverge from "./Functions/theverge"
 import ARpost from "./Functions/arpost"
 import useMouse from '@react-hook/mouse-position'
@@ -115,29 +115,25 @@ function App() {
 
   const elements = [
     {
-      api: <Decrypt />,
+      api: <Inevitable />,
       img:"https://renderapi.s3.amazonaws.com/WGUuFo8ab.png",
-      title: "DECRYPT",
+      title: "INEVITABLE",
       avatar: <Model scale={[9,9,9]}  mouse={mouse}  />
     },
     {
-    api: <BlanklessHQ />,
+    api: <Decrypt />,
     img:"https://renderapi.s3.amazonaws.com/xxo86RThN.png",
-    title: "BANKLESSHQ",
-
-    
+    title: "DECRYPT",
   },
   {
     api: <Decentraland />,
     img:"https://renderapi.s3.amazonaws.com/F2WuCu9wE.png",
     title: "DECENTRALAND",
-
   },
   {
     api: <Theverge />,
     img:"https://renderapi.s3.amazonaws.com/r6QoNHjuY.png",
     title: "THE VERGE",
-
   },
   {
     api: <ARpost />,
@@ -391,7 +387,7 @@ function Model({mouse, ...props }) {
           </section>
          
           <section className="ava" >
-        {/* The logic below is to allow for an avatar to be shown insead of an image, if the avatar is present */}
+        {/* The conditonal : ? logic below is to allow for an avatar to be shown insead of an image, if the avatar is present */}
         { elements[i].avatar ?  
          <Canvas  camera={{ position: [0, 0, 2.75], fov: 20 }} /* fov is 20 */ 
       pixelRatio={[1, 2]}
@@ -424,7 +420,7 @@ function Model({mouse, ...props }) {
    
       <header>
             <h1>METAVERSE BITES</h1>
-            <h6>VERSION 3.0.2</h6>
+            <h6>VERSION 3.0.3</h6>
         </header>
 
      

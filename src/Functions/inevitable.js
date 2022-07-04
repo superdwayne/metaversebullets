@@ -51,7 +51,7 @@ function Decrypt()  {
           );
       })
   
-        setShapes(formattedArr.slice(0,4));
+        setShapes(formattedArr.slice(0,2));
   
          
       });

@@ -168,10 +168,8 @@ header h6 {
 .true {
   width: 100% !important;
     display: block;
-    flex-wrap: wrap;
-    transform: none !important;
+    flex-wrap: wrap;    
     position: absolute !important;
-    top: 220px !important;
 }
 
 

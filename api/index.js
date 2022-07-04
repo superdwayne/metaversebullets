@@ -3,7 +3,6 @@ const cors = require('cors')
 const app = require('express')();
 const axios = require('axios');
 const cheerio = require('cheerio');
-const mongoose = require("mongoose");
 
 
 const dotenv = require('dotenv');
@@ -21,9 +20,9 @@ const decrypt = 'https://decrypt.co/'
 
 
 app.get('/api/inevitable', cors(), async (req, res) => {
-    await axios(inevitable).then(function(ressponse)
+    await axios(inevitable).then( async function(response)
     {
-        const html = ressponse.data
+        const html = response.data
         const $ = cheerio.load(html)
         // console.log(html)
         const articles = []
@@ -55,9 +54,9 @@ app.get('/api/inevitable', cors(), async (req, res) => {
   });
 
 app.get('/api/decrypt', cors(), async (req, res) => {
-    await axios(decrypt).then(function(ressponse)
+    await axios(decrypt).then( async function(response)
     {
-        const html = ressponse.data
+        const html = response.data
         const $ = cheerio.load(html)
         // console.log(html)
         const articles = []
@@ -78,53 +77,6 @@ app.get('/api/decrypt', cors(), async (req, res) => {
             res.send([{title: 'Refresh for latest articles'}]);
         } 
 
-        // console.log(articles)
-
-        //     const decentralandarticles = mongoose.model('decentraland', decentralandSchema, 'decentralandarticles');
-
-
-        //     decentralandarticles.count(function(err, count) {
-
-            
-        //         if( count === 0 || err) {
-        //             console.log("No Found Records For decentraland");                    
-                    
-        //         } else {
-
-        //             decentralandarticles.deleteMany( {articles} ,
-           
-        //                 function(err, result){
-            
-        //                     if(err){
-        //                        console.log('error')
-        //                     }
-        //                     else{
-        //                         console.log("success" , count , "items deleted  ")
-        //                     }
-                    
-        //                 }) 
-
-                   
-        //         }
-        //     });
-
-
-        //     decentralandarticles.find({}, function (err, users) {
-
-        //         decentralandarticles.collection.insertMany(articles, function (err, docs) {
-
-        //             if (err) {
-        //                 return console.error(err);
-        //             } else {
-        //                 // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-        //                 console.log(docs.insertedCount, "Enrties have been added to the for decentraland");
-        //                 res.send(users);
- 
-        //             }
-        //         });
-
-        //    });
-
 
     
     }).catch(err => console.log(err))
@@ -134,9 +86,10 @@ app.get('/api/decrypt', cors(), async (req, res) => {
   });
 
 app.get('/api/decentraland', cors(), async (req, res) => {
-    await axios(decentraland).then(function(ressponse)
+    await axios(decentraland).then( async function(response)
+    
     {
-        const html = ressponse.data
+        const html = response.data
         const $ = cheerio.load(html)
         // console.log(html)
         const articles = []
@@ -168,9 +121,9 @@ app.get('/api/decentraland', cors(), async (req, res) => {
 
 app.get('/api', cors(), async (req, res) => {
     
-    await axios(banklesshq).then(function(ressponse)
+    await axios(banklesshq).then( async function(response)
     {
-        const html = ressponse.data
+        const html = response.data
         const $ = cheerio.load(html)
         const articles = []
         $('.post-preview-content', html).each((i , elm) => {
@@ -193,52 +146,6 @@ app.get('/api', cors(), async (req, res) => {
         } 
 
 
-        //     // compile schema to model
-        //     const blankessarticles = mongoose.model('Book', articlesSchema, 'testoneupdate');
-
-
-        //     blankessarticles.count(function(err, count) {
-
-            
-        //         if( count === 0 || err) {
-        //             console.log("No Found Records For Blankess");                    
-                    
-        //         } else {
-
-        //             blankessarticles.deleteMany( {articles} ,
-           
-        //                 function(err, result){
-            
-        //                     if(err){
-        //                        console.log('error')
-        //                     }
-        //                     else{
-        //                         console.log("success" , count , "items deleted  ")
-        //                     }
-                    
-        //                 }) 
-
-                   
-        //         }
-        //     });
-
-
-        //     blankessarticles.find({}, function (err, users) {
-
-        //         blankessarticles.collection.insertMany(articles, function (err, docs) {
-
-        //             if (err) {
-        //                 return console.error(err);
-        //             } else {
-        //                 // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-        //                 console.log(docs.insertedCount, "Enrties have been added to the for Blankess");
-        //                 res.send(users);
- 
-        //             }
-        //         });
-
-        //    });
-
 
     
     }).catch(err => console.log(err))
@@ -250,9 +157,9 @@ app.get('/api', cors(), async (req, res) => {
 app.get('/api/theverge', async (req, res) => {
 
 
-  await axios(theverges).then(function(ressponse)
+  await axios(theverges).then( async function(response)
    {
-       const html = ressponse.data
+       const html = response.data
        const $ = cheerio.load(html)
        const thevergearticles = []
        $('.c-compact-river__entry', html).each((i , elm) => {
@@ -270,47 +177,6 @@ app.get('/api/theverge', async (req, res) => {
         res.send([{title: 'Refresh for latest articles'}]);
     } 
       
-        //    const theverge = mongoose.model('XR', thevergeSchema, 'theverge2');
-
-        //    theverge.count(function(err, count) {
-            
-        //     if( count === 0 || null) {
-        //         console.log("No Found Records For Blankess");                    
-                
-        //     } else {
-
-        //         theverge.deleteMany( {thevergearticles} ,
-       
-        //             function(err, result){
-        
-        //                 if(err){
-        //                    console.log('error')
-        //                 }
-        //                 else{
-        //                     console.log("success" , count , "items deleted for the Verge  ")
-        //                 }
-                
-        //             }) 
-               
-        //     }
-        // });
-
-
-        //    theverge.find({}, function (err, users) {
-    
-        //           theverge.collection.insertMany(thevergearticles, function (err, docs) {
-        //               if (err) {
-        //                   return console.error(err);
-        //               } else {
-        //                   // if number of articlres (insertedCount) is larger than 7 then delete and re-scrape
-        //                   console.log(docs.insertedCount, "Enrties have been added to the for the verge");
-        //                   res.send(users);
-   
-        //               }
-        //           });
-              
-        //       });
-       
    
    }).catch(err => console.log(err))
    
@@ -321,9 +187,9 @@ app.get('/api/theverge', async (req, res) => {
  app.get('/api/arpost', async (req, res) => {
 
     
-  await axios(arpost).then(function(ressponse)
+  await axios(arpost).then( async function(response)
    {
-       const html = ressponse.data
+       const html = response.data
        const $ = cheerio.load(html)
     //    console.log(html)
        const xrarticles = []
@@ -348,76 +214,6 @@ if (res.statusCode !== 200){
 
  });
 
-//  app.get('/api/hypebeast', async (req, res) => {
-
-//  res.setHeader('Content-Type', 'application/json');
-    
-//   await axios(hypebeast).then(function(ressponse)
-//    {
-//        const html = ressponse.data
-//        const $ = cheerio.load(html)
-//        const beastarticles = []
-//     //    console.log(html)
-//        $('.post-box', html).each((i , elm) => {
-//         const title = $(elm).find('.post-box-content-title').text()
-//         const artURL = $(elm).find('.title').attr('href')
-//         const preview = $(elm).find('.post-box-content-excerpt').text()
-//         beastarticles.push({
-//         title: title,
-//         preview: preview,
-//         url: artURL
-//         })
-//     })
-
-         
-//            const beast = mongoose.model('Beast', hypebeastschema, 'Hypebeast3');
-
-
-//            beast.count(function(err, count) {
-            
-//             if( count === 0 || null) {
-//                 console.log("No Found Records For Hype beast");                    
-                
-//             } else {
-
-//                 beast.deleteMany( {beastarticles} ,
-       
-//                     function(err, result){
-        
-//                         if(err){
-//                            console.log('error')
-//                         }
-//                         else{
-//                             console.log("success" , count , "items deleted for Hypebeast  ")
-//                         }
-                
-//                     }) 
-               
-//             }
-//         });
-
-
-   
-//            beast.find({}, function (err, users) {
-
-//             beast.collection.insertMany(beastarticles, function (err, docs) {
-//                 if (err) {
-//                     return console.error(err);
-//                 } else {
-              
-//                    console.log(docs.insertedCount, "Enrties have been added to the database for Hype Beast");
-//                    res.send(users)
-
-//                 }
-//             });
-//               });
-       
-   
-//    }).catch(err => console.log(err))
-   
-
-
-//  });
 
 app.use(cors())
 

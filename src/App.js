@@ -39,7 +39,7 @@ export default function App() {
     const { active, progress, errors, item, loaded, total } = useProgress()
     return (
       <>
-    <Html wrapperClass> 
+    <Html wrapperClass center> 
     <header>
      <h1>Metaverse universe</h1>
     </header> 

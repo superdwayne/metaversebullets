@@ -48,7 +48,7 @@ function Theverge() {
              );
          })
                 
-         setTheverge(formattedArr2.slice(0,6))
+         setTheverge(formattedArr2.slice(0,4))
               
       })
   

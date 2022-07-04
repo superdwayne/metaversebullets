@@ -62,9 +62,9 @@ app.get('/api/decrypt', cors(), async (req, res) => {
         // console.log(html)
         const articles = []
         $('.GridItem', html).each((i , elm) => {
-            const title = $(elm).find('h2').text().substring(0, 71)
+            const title = $(elm).find('h2').text().substring(0, 100)
             const artURL = $(elm).find('a').attr('href')
-            const preview = $(elm).find('p').text().substring(0, 71)
+            const preview = $(elm).find('p').text().substring(0, 100)
             articles.push({
             title: title,
             preview: preview,

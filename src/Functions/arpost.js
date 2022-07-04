@@ -38,7 +38,7 @@ function ARpost() {
              );
          })
                 
-         setThexr(formattedArr.slice(0,6))
+         setThexr(formattedArr.slice(0,4))
               
       })
   

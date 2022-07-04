@@ -38,7 +38,8 @@ export default function App() {
   function Loader() {
     const { active, progress, errors, item, loaded, total } = useProgress()
     return (
-    <Html center> 
+      <>
+    <Html wrapperClass> 
     <header>
      <h1>Metaverse universe</h1>
     </header> 
@@ -55,17 +56,9 @@ export default function App() {
     }}>
        <h2> {progress} % {active ? null : 'loading'} </h2>
     </header> 
-
-      
-    {/* <Canvas className='Loader-Canvas' style={{backgroundColor: "black" , display: "block" , height: "100vh", width: "100vw"}}>
-      <Suspense fallback={null} >
-
-        <Swing />
-      
-      </Suspense>
-    </Canvas> */}
-    
+  
     </Html>
+    </>
     )
   }
 

@@ -24,7 +24,7 @@ function Decrypt()  {
   
         Request(`api/decrypt`, params, (response) => {
   
-          console.log("test")
+         // console.log("test")
 
 
           setLoading(true)

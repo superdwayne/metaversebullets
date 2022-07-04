@@ -21,13 +21,15 @@ const decrypt = 'https://decrypt.co/'
 
 app.get('/api/inevitable', cors(), async (req, res) => {
     await axios(inevitable).then( async function(response)
+
     {
+
         const html = response.data
         const $ = cheerio.load(html)
         // console.log(html)
         const articles = []
         $('.post-layout ', html).each((i , elm) => {
-            const title = $(elm).find('a').text().replace(/(\r\n|\n|\r)/gm, "")
+            const title = $(elm).find('a').text()
             const artURL = $(elm).find('a').attr('href')
             const preview = $(elm).find('p').text().substring(0, 71)
             articles.push({

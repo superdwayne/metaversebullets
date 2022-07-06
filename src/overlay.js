@@ -4,6 +4,8 @@ import Decentraland from "./Functions/decentraland"
 import Inevitable from "./Functions/inevitable"
 import Theverge from "./Functions/theverge"
 import ARpost from "./Functions/arpost"
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
 
 
 const InevitablePosts = [
@@ -197,6 +199,25 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
     className="scroll">
     <div style={{ height: "200vh" }}>
       <div className="dot">
+      <MobileView>
+ 
+      
+      
+      <header style={{
+      position: "relative",
+      color: "black",
+      width: '800px',
+      backgroundColor: "white",
+      Margin: "10px auto",
+      display: "flex",
+
+      }}>
+        
+ 
+        <h1>Meta - Universe</h1>
+      </header> 
+ 
+      </MobileView>
         
     </div>
     </div>

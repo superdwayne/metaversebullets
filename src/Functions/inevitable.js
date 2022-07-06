@@ -9,7 +9,7 @@ function Decrypt()  {
     const [shapes, setShapes] = useState(null);
   
     useEffect(() => {
-  
+  const run = ()=>{
       const params = {
         method: 'GET',
         body: JSON.stringify(),
@@ -57,7 +57,8 @@ function Decrypt()  {
       });
   
       setLoading(false)
-  
+    }
+    run();
   // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   

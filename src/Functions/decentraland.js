@@ -25,7 +25,7 @@ function Decentraland()  {
   
           setLoading(true)
   
-          console.log(response , "DE"  )
+          console.log("Decentralland Response",response)
           
           let shape = JSON.parse(JSON.stringify(response))
   

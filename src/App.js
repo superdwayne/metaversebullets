@@ -1,4 +1,5 @@
 import React, {  useRef , Suspense, useEffect} from 'react'
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import {  Stars, Html, useProgress   } from '@react-three/drei'
 import { Canvas, useFrame, extend, useThree, } from '@react-three/fiber'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -41,6 +42,7 @@ export default function App() {
       <>
     <Html wrapperClass center> 
     <header>
+    
      <h1>Metaverse universe</h1>
     </header> 
     
@@ -65,14 +67,16 @@ export default function App() {
   return (
 
     <>
-    <Canvas style={{backgroundColor: "black" , display: "block" , height: "100vh", width: "100vw"}}>
+    <BrowserView>
+      <Canvas style={{backgroundColor: "black" , display: "block" , height: "100vh", width: "100vw"}}>
 
-        <ambientLight intensity={0.8} />
-       <Suspense fallback={<Loader />} >
-          <Avatar scroll={scroll} />      
-        </Suspense>
-
-      </Canvas>
+          <ambientLight intensity={0.8} />
+    
+            <Suspense fallback={<Loader />} >
+                    <Avatar scroll={scroll} /> 
+              </Suspense>
+        </Canvas>
+      </BrowserView>
       <Overlay ref={overlay} caption={caption} scroll={scroll} />
 
     </>

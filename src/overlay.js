@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react"
-import Decrypt from "./Functions/decrypt"
+import Wired from "./Functions/wired"
 import Decentraland from "./Functions/decentraland"
 import Inevitable from "./Functions/inevitable"
 import Theverge from "./Functions/theverge"
@@ -80,22 +80,22 @@ const InevitablePostsLoop = Object.keys(InevitablePosts).map((title, i) => {
   })
   
 
-  const DecryptPosts = [
+  const WiredPosts = [
     {
-      api: <Decrypt />,
-      title: 'DECRYPT'
+      api: <Wired />,
+      title: 'WIRED'
      
     },
   ]
 
-  const DecryptPostsLoop = Object.keys(DecryptPosts).map((title, i) => {
+  const WiredPostsLoop = Object.keys(WiredPosts).map((title, i) => {
 
     if (i % 2) {
       return (
         <div style={{ height: "200vh" }}>
         <div className="dot">
-              <p> LATEST NEWS FROM {DecryptPosts[i].title}</p>
-              <p>{DecryptPosts[i].api}</p>
+              <p> LATEST NEWS FROM {WiredPosts[i].title}</p>
+              <p>{WiredPosts[i].api}</p>
             </div>
         </div>     
        
@@ -106,8 +106,8 @@ const InevitablePostsLoop = Object.keys(InevitablePosts).map((title, i) => {
 
         <div style={{ height: "200vh" }}>   
           <div className="dot" id="left">
-              <p>LATEST NEWS FROM {DecryptPosts[i].title}</p>
-              <p>{DecryptPosts[i].api}</p>
+              <p>LATEST NEWS FROM {WiredPosts[i].title}</p>
+              <p>{WiredPosts[i].api}</p>
           </div>  
         </div>
      
@@ -234,7 +234,7 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
 
 
 
-   {DecryptPostsLoop}
+   {WiredPostsLoop}
 
    
    <div style={{ height: "50vh" }}>
@@ -244,7 +244,7 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
     </div>
 
 
-   {ThevergePostsLoop}
+   {/* {ThevergePostsLoop} */}
 
 
    {ArpostLoop}

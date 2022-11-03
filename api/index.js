@@ -16,7 +16,7 @@ const theverges = 'https://www.theverge.com/tech'
 const arpost = 'https://arpost.co/category/augmented-reality/'
 const inevitable = 'https://inevitable.media/category/nfts/'
 const decentraland = 'https://decentraland.org/blog/'
-const decrypt = 'https://decrypt.co/'
+const wired = 'https://www.wired.com/tag/metaverse/'
 
 
 app.get('/api/inevitable', cors(), async (req, res) => {
@@ -55,30 +55,27 @@ app.get('/api/inevitable', cors(), async (req, res) => {
 
   });
 
-app.get('/api/decrypt', cors(), async (req, res) => {
-    await axios(decrypt).then( async function(response)
+app.get('/api/wired', cors(), async (req, res) => {
+    await axios(wired).then( async function(response)
     {
         const html = response.data
         const $ = cheerio.load(html)
         // console.log(html)
         const articles = []
-        $('.GridItem', html).each((i , elm) => {
-            const title = $(elm).find('h2').text().substring(0, 100)
+        $('.SummaryItemWrapper-gcQMOo', html).each((i , elm) => {
+            const title = $(elm).find('.SummaryItemHedBase-dZZTtv').text().substring(0, 100)
             const artURL = $(elm).find('a').attr('href')
-            const preview = $(elm).find('p').text().substring(0, 100)
+            // const preview = $(elm).find('p').text().substring(0, 100)
             articles.push({
             title: title,
-            preview: preview,
-            atricleurl:'https://decrypt.co'+artURL
+            // preview: preview,
+            atricleurl:'https://www.wired.com'+artURL
             })
         })
 
         res.send(articles);
 
-        if (res.statusCode !== 200){
-            res.send([{title: 'Refresh for latest articles'}]);
-        } 
-
+       
 
     
     }).catch(err => console.log(err))

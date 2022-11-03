@@ -3,7 +3,7 @@ import React, {  useState, useEffect} from 'react'
 import Request from "../requests";
 import Loader from "./loader"
 
-function Decrypt()  {
+function Wired()  {
   
     const [loading, setLoading] = useState(false);
     const [shapes, setShapes] = useState(null);
@@ -22,7 +22,7 @@ function Decrypt()  {
       console.log("Component mounting..",  loading )
   
   
-        Request(`api/decrypt`, params, (response) => {
+        Request(`api/wired`, params, (response) => {
   
          // console.log("test")
 
@@ -35,11 +35,7 @@ function Decrypt()  {
   
          console.log(shape , "loading"  )
          
-         if (shape.length === 0) {
-           console.log('No articles')
-           window.location.reload(); 
-  
-         }
+         
         const formattedArr = Object.keys(shape).map((title, i) => {
           return (
           <span key={i}>
@@ -51,7 +47,7 @@ function Decrypt()  {
           );
       })
   
-        setShapes(formattedArr.slice(0,2));
+        setShapes(formattedArr.slice(0,4));
   
          
       });
@@ -69,4 +65,4 @@ function Decrypt()  {
     
   }
   
-export default Decrypt;
+export default Wired;

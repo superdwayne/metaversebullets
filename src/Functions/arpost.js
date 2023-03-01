@@ -26,7 +26,7 @@ function ARpost() {
           setLoading(true)
   
   
-          console.log(response) 
+          console.log(response, 'AR post') 
   
             const formattedArr = Object.keys(response).map((title, i) => {
             return (

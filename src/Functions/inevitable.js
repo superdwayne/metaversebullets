@@ -1,9 +1,8 @@
-
 import React, {  useState, useEffect} from 'react'
 import Request from "../requests";
 import Loader from "./loader"
 
-function Decrypt()  {
+function Inevitable()  {
   
     const [loading, setLoading] = useState(false);
     const [shapes, setShapes] = useState(null);
@@ -21,11 +20,8 @@ function Decrypt()  {
       
       console.log("Component mounting..",  loading )
   
-  
         Request(`api/inevitable`, params, (response) => {
   
-          console.log("test")
-
 
           setLoading(true)
   
@@ -33,13 +29,9 @@ function Decrypt()  {
           
           let shape = JSON.parse(JSON.stringify(response))
   
-         console.log(shape , "loading"  )
+       //  console.log(shape , "loading"  )
          
-         if (shape.length === 0) {
-           console.log('No articles')
-           window.location.reload(); 
-  
-         }
+        
         const formattedArr = Object.keys(shape).map((title, i) => {
           return (
           <span key={i}>
@@ -70,4 +62,4 @@ function Decrypt()  {
     
   }
   
-export default Decrypt;
+export default Inevitable;

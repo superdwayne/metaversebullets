@@ -1,17 +1,16 @@
 import React, { forwardRef } from "react"
 import Wired from "./Functions/wired"
-import Decentraland from "./Functions/decentraland"
 import Inevitable from "./Functions/inevitable"
-import Theverge from "./Functions/theverge"
 import ARpost from "./Functions/arpost"
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import WebthreeNews from "./Functions/decentraland"
 
 
 
 const InevitablePosts = [
   {
-    api: <Inevitable />,
-    title: 'INEVITABLE'
+    api: <Wired />,
+    title: 'WIRED'
    
   },
 ]
@@ -46,8 +45,8 @@ const InevitablePostsLoop = Object.keys(InevitablePosts).map((title, i) => {
 
   const DecentralandPosts = [
     {
-      api: <Decentraland />,
-      title: 'DECENTRALAND'
+      api: <WebthreeNews />,
+      title: 'WEB THREE NEWS'
      
     },
   ]
@@ -80,78 +79,7 @@ const InevitablePostsLoop = Object.keys(InevitablePosts).map((title, i) => {
   })
   
 
-  const WiredPosts = [
-    {
-      api: <Wired />,
-      title: 'WIRED'
-     
-    },
-  ]
 
-  const WiredPostsLoop = Object.keys(WiredPosts).map((title, i) => {
-
-    if (i % 2) {
-      return (
-        <div style={{ height: "200vh" }}>
-        <div className="dot">
-              <p> LATEST NEWS FROM {WiredPosts[i].title}</p>
-              <p>{WiredPosts[i].api}</p>
-            </div>
-        </div>     
-       
-       
-      );
-    } else {
-      return (
-
-        <div style={{ height: "200vh" }}>   
-          <div className="dot" id="left">
-              <p>LATEST NEWS FROM {WiredPosts[i].title}</p>
-              <p>{WiredPosts[i].api}</p>
-          </div>  
-        </div>
-     
-      );
-    }
-  })
-
-
-  const ThevergePosts = [
-    {
-      api: <Theverge />,
-      title: 'THE VERGE'
-     
-    },
-  ]
-
-  const ThevergePostsLoop = Object.keys(ThevergePosts).map((title, i) => {
-
-    if (i % 2) {
-      return (
-        <div style={{ height: "200vh" }}>
-        <div className="dot" id="right">
-              <p> LATEST NEWS FROM {ThevergePosts[i].title}</p>
-              <p>{ThevergePosts[i].api}</p>
-            </div>
-        </div>     
-       
-       
-      );
-    } else {
-      return (
-
-        <div style={{ height: "200vh" }}>   
-          <div className="dot" id="right">
-              <p>LATEST NEWS FROM {ThevergePosts[i].title}</p>
-              <p>{ThevergePosts[i].api}</p>
-          </div>  
-        </div>
-     
-      );
-    }
-  })
-
-  
   const Arpost = [
     {
       api: <ARpost />,
@@ -177,7 +105,7 @@ const InevitablePostsLoop = Object.keys(InevitablePosts).map((title, i) => {
       return (
 
         <div style={{ height: "300vh" }}>   
-          <div className="dot" id="right" >
+          <div className="dot" id="left" >
               <p>LATEST NEWS FROM {Arpost[i].title}</p>
               <p>{Arpost[i].api}</p>
           </div>  
@@ -232,10 +160,7 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
 
    {DecentralandPostsLoop}
 
-
-
-   {WiredPostsLoop}
-
+   {ArpostLoop}
    
    <div style={{ height: "50vh" }}>
       <div className="dot">
@@ -244,10 +169,9 @@ const Overlay = forwardRef(({ caption, scroll }, ref) => (
     </div>
 
 
-   {/* {ThevergePostsLoop} */}
 
 
-   {ArpostLoop}
+  
   
     {/* <span className="caption" ref={caption}>
       0.00

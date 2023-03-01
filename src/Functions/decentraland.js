@@ -2,13 +2,13 @@ import React, {  useState, useEffect} from 'react'
 import Request from "../requests";
 import Loader from "./loader"
 
-function Decentraland()  {
+function WebthreeNews()  {
   
     const [loading, setLoading] = useState(false);
     const [shapes, setShapes] = useState(null);
   
     useEffect(() => {
-  
+    const run = ()=>{
       const params = {
         method: 'GET',
         body: JSON.stringify(),
@@ -20,40 +20,35 @@ function Decentraland()  {
       
       console.log("Component mounting..",  loading )
   
-  
-        Request(`api/decentraland`, params, (response) => {
+        Request(`api/webthreenews`, params, (response) => {
   
           setLoading(true)
   
-          console.log("Decentralland Response",response)
+          console.log("WebthreeNews Response",response)
           
           let shape = JSON.parse(JSON.stringify(response))
   
          console.log(shape , "loading"  )
          
-         if (shape.length === 0) {
-           console.log('No articles')
-           window.location.reload(); 
-  
-         }
         const formattedArr = Object.keys(shape).map((title, i) => {
           return (
           <span key={i}>
             <a href={shape[i].atricleurl} target="_blank" rel="noreferrer">
               <h1>{shape[i].title}</h1>
-              <h4>{shape[i].preview}</h4>
+              {/* <h4>{shape[i].preview}</h4> */}
             </a>
           </span>
           );
       })
   
-        setShapes(formattedArr.slice(0,2 ));
+        setShapes(formattedArr.slice(0,4 ));
   
          
       });
   
       setLoading(false)
-  
+    }
+      run();
   // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   
@@ -65,4 +60,4 @@ function Decentraland()  {
     
   }
 
-  export default Decentraland;
+  export default WebthreeNews;

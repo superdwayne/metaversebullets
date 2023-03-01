@@ -29,11 +29,11 @@ function Wired()  {
 
           setLoading(true)
   
-          console.log(response , "DE"  )
+       //   console.log(response , "DE"  )
           
           let shape = JSON.parse(JSON.stringify(response))
   
-         console.log(shape , "loading"  )
+      //   console.log(shape , "loading"  )
          
          
         const formattedArr = Object.keys(shape).map((title, i) => {
